@@ -5,9 +5,15 @@
  */
 package project2.admin.DOB;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.zip.InflaterInputStream;
 import javax.swing.*;
 import project2.DbUtils;
+import static project2.admin.DOB.ConnectDb.getConnection;
+import project2.admin.Productform;
+import project2.admin.infofmation_admin.ProductInformation;
 /**
  *
  * @author son
@@ -30,9 +36,9 @@ public class Product {
             JOptionPane.showMessageDialog(null,"Add "+name,"Notify exist",1);
         }
     }
-    public static void UpdateProduct(String id , String name,String images,String describes ,float price){
+    public static void UpdateProduct(String id , String name,String category,String images,String describes ,float price){
         try {
-            String sql = "UPDATE Product SET name_product='"+name+"',images='"+images+"',describes='"+describes+"',price='"+price+"' WHERE id_product='"+id+"'";
+            String sql = "UPDATE Product SET name_product='"+name+"',category_name='"+category+"',images='"+images+"',describes='"+describes+"',price='"+price+"' WHERE id_product='"+id+"'";
             pst = cnn.prepareStatement(sql);
             pst.execute();
             JOptionPane.showMessageDialog(null,"Edit "+id+"  "+ name,"Susses",1);
@@ -50,6 +56,55 @@ public class Product {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,"Delete "+ id,"False",1);
         }
+    }
+    
+    public static void search(String name){
+        String sql = "select * from Product";
+        try {
+            pst = cnn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            while(rs.next()){
+                 String name_product = rs.getString("name_product");
+                if(((name_product.trim()).equals(name.trim())) == true){
+//                        rs.getString("id_product");
+//                        rs.getString("name_product");
+//                        rs.getString("category_name");
+//                        rs.getBytes("images");
+//                        rs.getString("describes");
+//                        rs.getFloat("price");
+                          JOptionPane.showMessageDialog(null,"Search Ok ");
+                          pst.close();
+                }else{
+                    JOptionPane.showMessageDialog(null,"Search Error ");
+                    pst.close();
+                }
+            }
+        } catch (Exception e) {
+        }
+    }
+    public ArrayList<ProductInformation> getData(){
+        ArrayList<ProductInformation> list = new ArrayList<ProductInformation>();
+        try {
+            String sql = "select * from Product";
+            pst = cnn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            while(rs.next()){
+                ProductInformation p = new ProductInformation(
+                        rs.getString("id_product"),
+                        rs.getString("name_product"),
+                        rs.getString("category_name"),
+                        rs.getBytes("images"),
+                        rs.getString("describes"),
+                        rs.getFloat("price")
+                        
+                );
+                list.add(p);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Product.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+        
     }
     
 }
