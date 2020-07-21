@@ -22,6 +22,7 @@ public class AddCategory extends javax.swing.JFrame {
      */
     public AddCategory() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

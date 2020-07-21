@@ -19,6 +19,7 @@ public class EditCategory extends javax.swing.JFrame {
      */
     public EditCategory() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

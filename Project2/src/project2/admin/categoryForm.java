@@ -30,6 +30,7 @@ public class categoryForm extends javax.swing.JFrame {
      */
     public categoryForm() {
         initComponents();
+        this.setLocationRelativeTo(null);
         UpdateTable.LoadData(sql, admin_table);
         admin_table.setRowHeight(70);
     }
@@ -62,7 +63,7 @@ public class categoryForm extends javax.swing.JFrame {
         btnAddCategory = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(870, 482));
+        setPreferredSize(new java.awt.Dimension(954, 558));
 
         jPanel8.setBackground(new java.awt.Color(241, 162, 12));
 
@@ -205,7 +206,7 @@ public class categoryForm extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btnAddCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(150, 150, 150)
+                        .addGap(148, 148, 148)
                         .addComponent(btndelete, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE))
@@ -215,11 +216,11 @@ public class categoryForm extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btndelete, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAddCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAddCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btndelete, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

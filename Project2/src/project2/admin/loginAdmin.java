@@ -23,6 +23,7 @@ public class loginAdmin extends javax.swing.JFrame {
      */
     public loginAdmin() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
     public JTextField getUserName(){
         return this.user_val;

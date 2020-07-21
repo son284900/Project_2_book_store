@@ -43,6 +43,7 @@ public class AddProduct extends javax.swing.JFrame {
     public AddProduct() {
         initComponents();
         fillCombobox();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -144,6 +145,12 @@ public class AddProduct extends javax.swing.JFrame {
         );
 
         jLabel6.setText("Id");
+
+        txtId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdActionPerformed(evt);
+            }
+        });
 
         btnEdit.setBackground(new java.awt.Color(241, 220, 17));
         btnEdit.setText("Edit");
@@ -393,6 +400,10 @@ public class AddProduct extends javax.swing.JFrame {
 //        }
        }
     }//GEN-LAST:event_btnEditActionPerformed
+
+    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdActionPerformed
 
     /**
      * @param args the command line arguments
