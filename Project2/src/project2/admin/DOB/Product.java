@@ -4,8 +4,10 @@
  * and open the template in the editor.
  */
 package project2.admin.DOB;
+import java.awt.Image;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.zip.InflaterInputStream;
@@ -36,6 +38,7 @@ public class Product {
             JOptionPane.showMessageDialog(null,"Add "+name,"Notify exist",1);
         }
     }
+   
     public static void UpdateProduct(String id , String name,String category,String images,String describes ,float price){
         try {
             String sql = "UPDATE Product SET name_product='"+name+"',category_name='"+category+"',images='"+images+"',describes='"+describes+"',price='"+price+"' WHERE id_product='"+id+"'";
@@ -58,30 +61,6 @@ public class Product {
         }
     }
     
-    public static void search(String name){
-        String sql = "select * from Product";
-        try {
-            pst = cnn.prepareStatement(sql);
-            rs = pst.executeQuery();
-            while(rs.next()){
-                 String name_product = rs.getString("name_product");
-                if(((name_product.trim()).equals(name.trim())) == true){
-//                        rs.getString("id_product");
-//                        rs.getString("name_product");
-//                        rs.getString("category_name");
-//                        rs.getBytes("images");
-//                        rs.getString("describes");
-//                        rs.getFloat("price");
-                          JOptionPane.showMessageDialog(null,"Search Ok ");
-                          pst.close();
-                }else{
-                    JOptionPane.showMessageDialog(null,"Search Error ");
-                    pst.close();
-                }
-            }
-        } catch (Exception e) {
-        }
-    }
     public ArrayList<ProductInformation> getData(){
         ArrayList<ProductInformation> list = new ArrayList<ProductInformation>();
         try {
@@ -106,5 +85,6 @@ public class Product {
         return list;
         
     }
+    
     
 }

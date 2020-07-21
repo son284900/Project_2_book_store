@@ -25,6 +25,7 @@ public class adminform extends javax.swing.JFrame {
     public adminform() {
         initComponents();
         UpdateTable.LoadData(sql, admin_table);
+        admin_table.setRowHeight(70);
     }
 
     /**

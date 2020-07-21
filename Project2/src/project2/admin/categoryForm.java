@@ -31,7 +31,7 @@ public class categoryForm extends javax.swing.JFrame {
     public categoryForm() {
         initComponents();
         UpdateTable.LoadData(sql, admin_table);
-        
+        admin_table.setRowHeight(70);
     }
     EditCategory show_data_category = new EditCategory();
     public void Show(){
