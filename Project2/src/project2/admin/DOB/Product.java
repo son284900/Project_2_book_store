@@ -14,8 +14,8 @@ import java.util.zip.InflaterInputStream;
 import javax.swing.*;
 import project2.DbUtils;
 import static project2.admin.DOB.ConnectDb.getConnection;
-import project2.admin.Productform;
 import project2.admin.infofmation_admin.ProductInformation;
+import project2.view.HomePage;
 /**
  *
  * @author son
@@ -85,6 +85,9 @@ public class Product {
         return list;
         
     }
+    
+        
+    
     
     
 }

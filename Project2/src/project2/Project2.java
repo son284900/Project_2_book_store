@@ -5,7 +5,7 @@
  */
 package project2;
 
-import project2.admin.loginAdmin;
+import project2.view.FormLogin;
 
 /**
  *
@@ -17,8 +17,8 @@ public class Project2 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        loginAdmin log = new loginAdmin();
-        log.show();
+        FormLogin login = new FormLogin();
+        login.show();
     }
     
 }
