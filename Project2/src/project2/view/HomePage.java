@@ -40,12 +40,12 @@ public class HomePage extends javax.swing.JFrame {
     /**
      * Creates new form HomePage
      */
+    FormLogin loginUser = new FormLogin();
     public HomePage() {
         initComponents();
-//        loginAdmin lg = new loginAdmin();
-//        lbUser.setText(lg.user_val.getText());
         fillCombobox();
         populateTable();
+        this.txtUser.setText("User Name: "+FormLogin.userName);
         this.setLocationRelativeTo(null);
     }
 
@@ -75,6 +75,10 @@ public class HomePage extends javax.swing.JFrame {
         tbHome = new javax.swing.JTable();
         btnAdd = new javax.swing.JButton();
         btndelete = new javax.swing.JButton();
+        txtOk = new javax.swing.JLabel();
+        txtError = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        txtUser = new javax.swing.JLabel();
         txtSearch = new javax.swing.JTextField();
         jPanel9 = new javax.swing.JPanel();
         lbUser = new javax.swing.JLabel();
@@ -197,7 +201,7 @@ public class HomePage extends javax.swing.JFrame {
         boxCategory.setBackground(new java.awt.Color(194, 203, 187));
         boxCategory.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N
         boxCategory.setForeground(new java.awt.Color(241, 22, 22));
-        boxCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Thể Loại" }));
+        boxCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Category" }));
         boxCategory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boxCategoryActionPerformed(evt);
@@ -267,6 +271,15 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(237, 68, 12));
+        jButton1.setForeground(new java.awt.Color(254, 254, 254));
+        jButton1.setText("Logout");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -281,7 +294,15 @@ public class HomePage extends javax.swing.JFrame {
                         .addGap(33, 33, 33)
                         .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btndelete, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btndelete, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(80, 80, 80)
+                        .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtOk, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtError, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -289,13 +310,21 @@ public class HomePage extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(386, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btndelete, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btndelete, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtOk, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtError, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(txtUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -532,13 +561,13 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel4MouseClicked
     AddProduct show_data_product = new AddProduct();
     private void tbHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbHomeMouseClicked
-       int row = tbHome.getSelectedRow();
+        int row = tbHome.getSelectedRow();
         TableModel model = tbHome.getModel();
         String id = model.getValueAt(row,0).toString();
         String name = model.getValueAt(row, 1).toString();
         String category = model.getValueAt(row,2).toString();
         ImageIcon images =(ImageIcon)tbHome.getValueAt(row,3);
-        Image image2 = images.getImage().getScaledInstance(tbHome.getWidth(),tbHome.getHeight(),Image.SCALE_SMOOTH);
+        Image image2 = images.getImage().getScaledInstance(show_data_product.lbl_image_list.getWidth(),show_data_product.lbl_image_list.getHeight(),Image.SCALE_SMOOTH);
         ImageIcon image3 = new ImageIcon(image2);
         String image = model.getValueAt(row,3).toString();
         String describes = model.getValueAt(row, 4).toString();
@@ -575,12 +604,13 @@ public class HomePage extends javax.swing.JFrame {
             TableModel model = tbHome.getModel();
             String id = model.getValueAt(row,0).toString();
             Product.DeleteProduct(id);
-//            txtSusses.setText("Delete is Ok ");
+            txtOk.setText("Delete is Ok ");
             this.setVisible(false);
             HomePage deleteLoad = new HomePage();
             deleteLoad.setVisible(true);
             statement.close();
         } catch (SQLException ex) {
+            txtError.setText("Delete is Error ");
         }
     }//GEN-LAST:event_btndeleteActionPerformed
 
@@ -591,6 +621,12 @@ public class HomePage extends javax.swing.JFrame {
     private void tbHomeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbHomeMousePressed
         // TODO add your handling code here:
     }//GEN-LAST:event_tbHomeMousePressed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.setVisible(false);
+        loginUser.setVisible(true);
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
     public void tableData(){
         String sql = "Select * from Product";
         try {
@@ -621,13 +657,13 @@ public class HomePage extends javax.swing.JFrame {
                 rows[i][3]=null;
             }
         }
+        
         TheModel model = new TheModel(rows, colum);
         tbHome.setModel(model);
         tbHome.setRowHeight(120);
         tbHome.getColumnModel().getColumn(3).setPreferredWidth(120);
-//
-    
        }
+
     /**
      * @param args the command line arguments
      */
@@ -683,6 +719,7 @@ public class HomePage extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> boxCategory;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btndelete;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -696,9 +733,12 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JLabel lbUser;
     private javax.swing.JTable tbHome;
     private javax.swing.JLabel txtBook;
+    private javax.swing.JLabel txtError;
+    private javax.swing.JLabel txtOk;
     private javax.swing.JTextField txtSearch;
     private javax.swing.JLabel txtSup;
     private javax.swing.JLabel txtSup1;
+    private javax.swing.JLabel txtUser;
     private javax.swing.JLabel txthome;
     // End of variables declaration//GEN-END:variables
 }

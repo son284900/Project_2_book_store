@@ -26,6 +26,7 @@ import project2.admin.DOB.Product;
 import static project2.admin.DOB.Product.cnn;
 import static project2.admin.DOB.Product.pst;
 import java.awt.Image;
+import java.io.FileNotFoundException;
 import javax.swing.Icon;
 import project2.view.HomePage;
 
@@ -163,7 +164,7 @@ public class AddProduct extends javax.swing.JFrame {
 
         jLabel7.setText("Category");
 
-        boxCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        boxCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Category" }));
 
         txtError.setForeground(new java.awt.Color(232, 10, 10));
 
@@ -173,15 +174,6 @@ public class AddProduct extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(btnback, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(btn_reset, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
-                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(257, 257, 257)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -195,23 +187,30 @@ public class AddProduct extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addComponent(jLabel7))
                         .addGap(46, 46, 46)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtPrice, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
+                            .addComponent(txtDecribe, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
+                            .addComponent(txtId, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
+                            .addComponent(txtName)
+                            .addComponent(boxCategory, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnImage, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtError, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lbl_image_list, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtError, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbl_image_list, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtPrice, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
-                                    .addComponent(txtDecribe, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
-                                    .addComponent(txtId, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
-                                    .addComponent(txtName)
-                                    .addComponent(boxCategory, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addComponent(btnback, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(28, 28, 28)
+                                .addComponent(btn_reset, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(34, 34, 34)
+                                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(36, 36, 36)
+                                .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -239,19 +238,19 @@ public class AddProduct extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(boxCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7))
                         .addGap(31, 31, 31)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_image_list, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(btnImage, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel5))
-                                .addGap(38, 38, 38)
-                                .addComponent(txtError, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtError, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lbl_image_list, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -275,51 +274,106 @@ public class AddProduct extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtDecribeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDecribeActionPerformed
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        if((txtName.getText().trim().length()==0)
+            ||(Float.parseFloat(this.txtPrice.getText().trim()) == 0)
+        ){
+            txtError.setText("không được bỏ trống");
+        }else{
+            String idVal = txtId.getText().trim();
+            try {
+                String nameVal = txtName.getText();
+                String categoryVal= boxCategory.getSelectedItem().toString();
+                String describesVal = txtDecribe.getText();
+                String priceVal = txtPrice.getText();
+                String sql = "UPDATE Product SET name_product='"+nameVal+"',category_name='"+categoryVal+"',describes='"+describesVal+"',price='"+priceVal+"' WHERE id_product='"+idVal+"'";
+                pst = cnn.prepareStatement(sql);
+                pst.execute();
+                JOptionPane.showMessageDialog(null,"Edit "+idVal+"  "+ nameVal,"Susses",1);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error dont update information");
+            }
+            try {
+                File file = new File(ImagePath);
+                FileInputStream fis = new FileInputStream(file);
+                byte[] images = new byte[(int)file.length()];
+                fis.read(images);
+                String sql = "UPDATE Product SET images = ? where id_product = '"+idVal+"'";
+                pst = cnn.prepareStatement(sql);
+                pst.setBytes(3, images);
+                pst.execute();
+                pst.close();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null,e);
+            }
+
+        }
+    }//GEN-LAST:event_btnEditActionPerformed
+
+    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtDecribeActionPerformed
+    }//GEN-LAST:event_txtIdActionPerformed
+
+    private void btnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbackActionPerformed
+        this.setVisible(false);
+        HomePage back = new HomePage();
+        back.setVisible(true);
+    }//GEN-LAST:event_btnbackActionPerformed
+
+    private void btn_resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_resetActionPerformed
+        Referesh();
+    }//GEN-LAST:event_btn_resetActionPerformed
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+
+        if((txtName.getText().trim().length()==0)
+            ||(Float.parseFloat(this.txtPrice.getText().trim()) == 0)
+        ){
+            txtError.setText("không được bỏ trống");
+        }else{
+            try {
+                String sql ="insert into Product (name_product,category_name,images,describes,price) VALUES (?,?,?,?,?)";
+                InputStream img = new FileInputStream(new File(ImagePath));
+                pst = cnn.prepareStatement(sql);
+                pst.setString(1,this.txtName.getText().trim());
+                pst.setString(2, this.boxCategory.getSelectedItem().toString());
+                pst.setBlob(3, img);
+                pst.setString(4,this.txtDecribe.getText().trim());
+                pst.setFloat(5, Float.parseFloat(this.txtPrice.getText().trim()));
+                pst.execute();
+                txtError.setText(this.txtName.getText()+"Notify Instert Susses");
+            } catch (Exception e) {
+                txtError.setText(this.txtName.getText()+"Error");
+            }
+        }
+
+    }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImageActionPerformed
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Images","jpg","gif","png");
+        JFileChooser file = new JFileChooser("/home/son/Desktop/Project_2_book_store/Project2/src/project2/image");
+        file.addChoosableFileFilter(filter);
+        int result = file.showSaveDialog(null);
+        if(result == JFileChooser.APPROVE_OPTION){
+            File selectFile = file.getSelectedFile();
+            String path = selectFile.getAbsolutePath();
+            lbl_image_list.setIcon(ResizeImage(path,null));
+            ImagePath = path;
+        }else if(result==JFileChooser.CANCEL_OPTION){
+            System.out.println("No File Select");
+        }
+    }//GEN-LAST:event_btnImageActionPerformed
 
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
 
     }//GEN-LAST:event_txtNameActionPerformed
+
+    private void txtDecribeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDecribeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDecribeActionPerformed
     public static PreparedStatement pst = null;
     public static ResultSet rs =null;
-    public static Connection cnn = ConnectDb.getConnection();
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-//        if(txtName.getText().trim().length()==0){
-//           JOptionPane.showMessageDialog(null,"Tên thể lọai không được bỏ trống" +txtName,"Thông báo",1);
-//       }else{
-//            Product.InsertProduct(
-//                    this.txtName.getText().trim(),
-//                    this.lbl_image_list.getText().trim(),
-//                    this.txtDecribe.getText().trim(),
-//                    Float.parseFloat(this.txtPrice.getText().trim())
-//            );
-//       }
-        if((txtName.getText().trim().length()==0) 
-           ||(Float.parseFloat(this.txtPrice.getText().trim()) == 0)
-           ){
-           txtError.setText("không được bỏ trống");
-       }else{
-        try {
-            String sql ="insert into Product (name_product,category_name,images,describes,price) VALUES (?,?,?,?,?)";
-            InputStream img = new FileInputStream(new File(ImagePath));
-            pst = cnn.prepareStatement(sql);
-            pst.setString(1,this.txtName.getText().trim());
-            pst.setString(2, this.boxCategory.getSelectedItem().toString());
-            pst.setBlob(3, img);
-            pst.setString(4,this.txtDecribe.getText().trim());
-            pst.setFloat(5, Float.parseFloat(this.txtPrice.getText().trim()));
-            pst.execute();
-            txtError.setText(this.txtName.getText()+"Notify Instert Susses");
-        } catch (Exception e) {
-             txtError.setText(this.txtName.getText()+"Error");
-        }
-        }
-    
-            
-    }//GEN-LAST:event_btnAddActionPerformed
-    public void Referesh(){
+    public static Connection cnn = ConnectDb.getConnection();    public void Referesh(){
         txtName.setText("");
         txtDecribe.setText("");
         txtPrice.setText("");
@@ -338,69 +392,6 @@ public class AddProduct extends javax.swing.JFrame {
             Logger.getLogger(AddProduct.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    private void btn_resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_resetActionPerformed
-        Referesh();
-    }//GEN-LAST:event_btn_resetActionPerformed
-
-    private void btnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbackActionPerformed
-        this.setVisible(false);
-        HomePage back = new HomePage();
-        back.setVisible(true);
-    }//GEN-LAST:event_btnbackActionPerformed
-
-    private void btnImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImageActionPerformed
-          
-        JFileChooser file = new JFileChooser();
-        file.setCurrentDirectory(new File(System.getProperty("user.home")));
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("*.Images","jpg","gif","png");
-        int result = file.showSaveDialog(null);
-        if(result == JFileChooser.APPROVE_OPTION){
-            File selectFile = file.getSelectedFile();
-            String path = selectFile.getAbsolutePath();
-            lbl_image_list.setIcon(ResizeImage(path,null));
-            ImagePath = path;
-            
-        }else if(result==JFileChooser.CANCEL_OPTION){
-            System.out.println("No File Select");
-        }
-    }//GEN-LAST:event_btnImageActionPerformed
-
-    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-        if((txtName.getText().trim().length()==0) 
-           ||(Float.parseFloat(this.txtPrice.getText().trim()) == 0)
-           ){
-            txtError.setText("không được bỏ trống");
-       }else{   
-               String value_box_category = boxCategory.getSelectedItem().toString();
-               Product.UpdateProduct(
-                    this.txtId.getText().trim(),
-                    this.txtName.getText().trim(),
-                    this.boxCategory.getSelectedItem().toString(),
-                    this.lbl_image_list.getText().trim(),
-                    this.txtDecribe.getText().trim(),
-                    Float.parseFloat(this.txtPrice.getText().trim())
-            );  
-//            try {
-//            String sql = "UPDATE Product SET name_product=?,images=?,describes=?,price=? WHERE id_product=?";
-//            InputStream img = new FileInputStream(new File(ImagePath));
-//            pst = cnn.prepareStatement(sql);
-//            pst.setString(1, this.txtId.getText().trim());
-//            pst.setString(2,this.txtName.getText().trim());
-//            pst.setBlob(3, img);
-//            pst.setString(4,this.txtDecribe.getText().trim());
-//            pst.setFloat(5, Float.parseFloat(this.txtPrice.getText().trim()));
-//            pst.execute();
-//            JOptionPane.showMessageDialog(null,"Edit "+this.txtName.getText(),"Notify Instert Susses",1);
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null,"Edit  "+this.txtName.getText(),"Notify exist",1);
-//        }
-       }
-    }//GEN-LAST:event_btnEditActionPerformed
-
-    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIdActionPerformed
-
     /**
      * @param args the command line arguments
      */

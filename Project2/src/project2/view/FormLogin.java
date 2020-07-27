@@ -10,12 +10,16 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
  * @author son
  */
 public class FormLogin extends javax.swing.JFrame {
+
+    private String val;
 
     /**
      * Creates new form FormLogin
@@ -149,7 +153,10 @@ public class FormLogin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    public String getUser(){
+        String val = user_val.getText();
+        return val;
+    }
     private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
         System.exit(0);
 
@@ -162,9 +169,9 @@ public class FormLogin extends javax.swing.JFrame {
     private void pass_valActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pass_valActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_pass_valActionPerformed
-
+    public static String userName;
     private void pass_valKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pass_valKeyPressed
-                if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
                          if(user_val.getText().trim().length() == 0  || pass_val.getText().trim().length() == 0){
                             txtError.setText("Empty fields detected ! Please fill up all fields");
                             }else{
@@ -172,11 +179,14 @@ public class FormLogin extends javax.swing.JFrame {
                                 char[] pass = pass_val.getPassword();
                                 String password = String.copyValueOf(pass);
                                 if(validate_login(user,password)){
+                                        userName = this.user_val.getText();
                                         this.setVisible(false);
                                         HomePage adm = new HomePage();
+                                        Category_F loginUserCt = new Category_F();
                                         adm.setVisible(true);
-                    
-                    
+//                                        adm.txtUser.setText("User  : "+ this.getUser());
+//                                        loginUserCt.txtUser.setText("User  : "+ this.getUser());
+                                        JOptionPane.showMessageDialog(null,"Hello : " +this.getUser(),"Notify",1);
                                     }
                                 else
                                    txtError.setText("Error login --- Check again user name and password");

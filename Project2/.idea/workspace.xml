@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4122df85-c22a-40a2-a11f-7bbb6d7a8a39" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/build/classes/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/.netbeans_automatic_build" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/.netbeans_update_resources" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/DbUtils$DriverProxy.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/DbUtils$DriverProxy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/DbUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/DbUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/Project2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/Project2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/DOB/Category.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/DOB/Category.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/DOB/ConnectDb.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/DOB/ConnectDb.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/DOB/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/DOB/Product.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/DOB/TheModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/DOB/TheModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/DOB/UpdateTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/DOB/UpdateTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/DOB/userAdminDOB.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/DOB/userAdminDOB.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/adminform$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/adminform$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/adminform$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/adminform$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/adminform.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/adminform.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/adminform.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/edit/EditCategory$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/edit/EditCategory$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/edit/EditCategory$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/edit/EditCategory$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/edit/EditCategory$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/edit/EditCategory$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/edit/EditCategory$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/edit/EditCategory$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/edit/EditCategory$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/edit/EditCategory$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/edit/EditCategory$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/edit/EditCategory$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/edit/EditCategory.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/edit/EditCategory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/edit/EditCategory.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/infofmation_admin/ProductInformation.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/infofmation_admin/ProductInformation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/infofmation_admin/UserAdmin.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/infofmation_admin/UserAdmin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/project2/admin/formAdd/AddProduct.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/project2/admin/formAdd/AddProduct.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/project2/admin/formAdd/AddProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project2/admin/formAdd/AddProduct.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/project2/image/desola-lanre-ologun-zYgV-NGZtlA-unsplash (1).jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/project2/view/HomePage.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/project2/view/HomePage.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/project2/view/HomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project2/view/HomePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mysql/Mydb-2020_07_18_22_20_45-dump.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/Mydb-2020_07_18_22_20_45-dump.sql" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1f7N5JinBzTahOLkJZMf9Ue7nUk" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW" value="false" />
+    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="311" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Project2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="project2.Project2" />
+      <module name="Project2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="project2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Project2" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4122df85-c22a-40a2-a11f-7bbb6d7a8a39" name="Default Changelist" comment="" />
+      <created>1595564986259</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1595564986259</updated>
+      <workItem from="1595564989694" duration="4000" />
+      <workItem from="1595648220836" duration="220000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1263" height="152" key="GridCell.Tab.0.bottom" timestamp="1595648442808">
+      <screen x="0" y="27" width="1329" height="741" />
+    </state>
+    <state width="1263" height="152" key="GridCell.Tab.0.bottom/0.27.1329.741@0.27.1329.741" timestamp="1595648442808" />
+    <state width="1263" height="152" key="GridCell.Tab.0.center" timestamp="1595648442808">
+      <screen x="0" y="27" width="1329" height="741" />
+    </state>
+    <state width="1263" height="152" key="GridCell.Tab.0.center/0.27.1329.741@0.27.1329.741" timestamp="1595648442808" />
+    <state width="1263" height="152" key="GridCell.Tab.0.left" timestamp="1595648442807">
+      <screen x="0" y="27" width="1329" height="741" />
+    </state>
+    <state width="1263" height="152" key="GridCell.Tab.0.left/0.27.1329.741@0.27.1329.741" timestamp="1595648442807" />
+    <state width="1263" height="152" key="GridCell.Tab.0.right" timestamp="1595648442808">
+      <screen x="0" y="27" width="1329" height="741" />
+    </state>
+    <state width="1263" height="152" key="GridCell.Tab.0.right/0.27.1329.741@0.27.1329.741" timestamp="1595648442808" />
+  </component>
+</project>
