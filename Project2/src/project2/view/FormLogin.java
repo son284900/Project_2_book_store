@@ -42,13 +42,15 @@ public class FormLogin extends javax.swing.JFrame {
         Login = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        btn_cancel = new javax.swing.JButton();
+        btnReset = new javax.swing.JButton();
         user_val = new javax.swing.JTextField();
         pass_val = new javax.swing.JPasswordField();
         btn_login = new javax.swing.JButton();
         txtError = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        btn_cancel1 = new javax.swing.JButton();
+        txtRegister = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,15 +76,15 @@ public class FormLogin extends javax.swing.JFrame {
         Login.add(jLabel2);
         jLabel2.setBounds(20, 220, 120, 40);
 
-        btn_cancel.setBackground(new java.awt.Color(255, 102, 102));
-        btn_cancel.setText("Cancel");
-        btn_cancel.addActionListener(new java.awt.event.ActionListener() {
+        btnReset.setBackground(new java.awt.Color(244, 168, 10));
+        btnReset.setText("Reset");
+        btnReset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_cancelActionPerformed(evt);
+                btnResetActionPerformed(evt);
             }
         });
-        Login.add(btn_cancel);
-        btn_cancel.setBounds(160, 290, 81, 49);
+        Login.add(btnReset);
+        btnReset.setBounds(320, 290, 81, 49);
 
         user_val.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,11 +115,11 @@ public class FormLogin extends javax.swing.JFrame {
             }
         });
         Login.add(btn_login);
-        btn_login.setBounds(420, 290, 81, 49);
+        btn_login.setBounds(490, 290, 81, 49);
 
         txtError.setForeground(new java.awt.Color(234, 9, 9));
         Login.add(txtError);
-        txtError.setBounds(120, 340, 430, 47);
+        txtError.setBounds(120, 367, 430, 30);
 
         jLabel5.setFont(new java.awt.Font("DialogInput", 0, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(233, 26, 26));
@@ -125,10 +127,30 @@ public class FormLogin extends javax.swing.JFrame {
         Login.add(jLabel5);
         jLabel5.setBounds(230, 60, 210, 100);
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("/home/son/Desktop/Project_2_book_store/Project2/src/project2/image/benjamin-thomas-qDEvPXs9PwY-unsplash.jpg")); // NOI18N
-        jLabel6.setText("jLabel6");
-        Login.add(jLabel6);
-        jLabel6.setBounds(0, 0, 640, 400);
+        btn_cancel1.setBackground(new java.awt.Color(255, 102, 102));
+        btn_cancel1.setText("Cancel");
+        btn_cancel1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cancel1ActionPerformed(evt);
+            }
+        });
+        Login.add(btn_cancel1);
+        btn_cancel1.setBounds(160, 290, 81, 49);
+
+        txtRegister.setForeground(new java.awt.Color(17, 28, 254));
+        txtRegister.setText("            Register");
+        txtRegister.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtRegisterMouseClicked(evt);
+            }
+        });
+        Login.add(txtRegister);
+        txtRegister.setBounds(290, 340, 150, 30);
+
+        jLabel3.setIcon(new javax.swing.ImageIcon("/home/son/Desktop/Project_2_book_store/Project2/src/project2/image/benjamin-thomas-qDEvPXs9PwY-unsplash.jpg")); // NOI18N
+        jLabel3.setText("jLabel3");
+        Login.add(jLabel3);
+        jLabel3.setBounds(0, 0, 640, 400);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -157,10 +179,10 @@ public class FormLogin extends javax.swing.JFrame {
         String val = user_val.getText();
         return val;
     }
-    private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
-        System.exit(0);
-
-    }//GEN-LAST:event_btn_cancelActionPerformed
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
+       this.user_val.setText("");
+       this.pass_val.setText("");
+    }//GEN-LAST:event_btnResetActionPerformed
 
     private void user_valActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_user_valActionPerformed
         // TODO add your handling code here:
@@ -217,6 +239,16 @@ public class FormLogin extends javax.swing.JFrame {
                            pass_val.setText("");
                          }
     }//GEN-LAST:event_btn_loginActionPerformed
+
+    private void btn_cancel1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancel1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_cancel1ActionPerformed
+
+    private void txtRegisterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtRegisterMouseClicked
+      this.setVisible(false);
+      RegisterForm register = new RegisterForm();
+      register.setVisible(true);
+    }//GEN-LAST:event_txtRegisterMouseClicked
      private boolean validate_login(String username, String password) {
        try{           
             Class.forName("com.mysql.jdbc.Driver"); 
@@ -272,14 +304,16 @@ public class FormLogin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Login;
-    private javax.swing.JButton btn_cancel;
+    private javax.swing.JButton btnReset;
+    private javax.swing.JButton btn_cancel1;
     private javax.swing.JButton btn_login;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPasswordField pass_val;
     private javax.swing.JLabel txtError;
+    private javax.swing.JLabel txtRegister;
     public javax.swing.JTextField user_val;
     // End of variables declaration//GEN-END:variables
 }

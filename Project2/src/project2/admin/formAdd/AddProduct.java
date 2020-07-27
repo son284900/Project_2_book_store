@@ -298,7 +298,7 @@ public class AddProduct extends javax.swing.JFrame {
                 FileInputStream fis = new FileInputStream(file);
                 byte[] images = new byte[(int)file.length()];
                 fis.read(images);
-                String sql = "UPDATE Product SET images = ? where id_product = '"+idVal+"'";
+                String sql = "UPDATE Product SET images  where id_product = '"+idVal+"'";
                 pst = cnn.prepareStatement(sql);
                 pst.setBytes(3, images);
                 pst.execute();

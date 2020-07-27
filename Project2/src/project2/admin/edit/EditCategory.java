@@ -202,7 +202,7 @@ public class EditCategory extends javax.swing.JFrame {
     }//GEN-LAST:event_txtIdMouseClicked
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-         if(txtName.getText().trim().length()==0){
+       if(txtName.getText().trim().length()==0){
            JOptionPane.showMessageDialog(null,"Tên thể lọai không được bỏ trống" +txtName,"Thông báo",1);
        }else{
            Category.InsertCategory(this.txtName.getText().trim());
