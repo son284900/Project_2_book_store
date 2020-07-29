@@ -16,14 +16,16 @@ public class ProductInformation {
     private byte[] MyImage;
     private String decritble;
     private Float price;
+    private int Quantity;
 
-    public ProductInformation(String id, String name, String category, byte[] MyImage, String decritble, Float price) {
+    public ProductInformation(String id, String name, String category, byte[] MyImage, String decritble, Float price,int qua) {
         this.id = id;
         this.name = name;
         this.category = category;
         this.MyImage = MyImage;
         this.decritble = decritble;
         this.price = price;
+        this.Quantity=qua;
     }
     
     
@@ -52,9 +54,15 @@ public class ProductInformation {
     public Float getPrice() {
         return price;
     }
+     public int getQuantity() {
+        return Quantity;
+    }
 
     public void setPrice(Float price) {
         this.price = price;
+    }
+     public void setQuantity(int qua) {
+        this.Quantity = qua;
     }
 
     public String getDecritble() {

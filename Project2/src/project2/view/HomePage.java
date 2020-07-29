@@ -5,11 +5,20 @@
  */
 package project2.view;
 
+import com.mysql.cj.result.Row;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.event.KeyEvent;
 import java.awt.Image;
 import java.awt.desktop.PreferencesEvent;
 import java.awt.event.KeyEvent;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Path;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,6 +29,9 @@ import javax.swing.JOptionPane;
 import java.sql.*;
 import java.util.ArrayList;
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 import project2.admin.DOB.ConnectDb;
 import project2.admin.DOB.Product;
@@ -30,17 +42,19 @@ import project2.admin.DOB.TheModel;
 import project2.admin.DOB.UpdateTable;
 import project2.admin.formAdd.AddProduct;
 import project2.admin.infofmation_admin.ProductInformation;
+import static project2.view.Category_F.rs;
+
 
 /**
  *
  * @author son
  */
+
 public class HomePage extends javax.swing.JFrame {
 
     /**
      * Creates new form HomePage
      */
-    FormLogin loginUser = new FormLogin();
     public HomePage() {
         initComponents();
         fillCombobox();
@@ -68,6 +82,7 @@ public class HomePage extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         txtSup1 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
+        txtSup2 = new javax.swing.JLabel();
         boxCategory = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
@@ -75,15 +90,14 @@ public class HomePage extends javax.swing.JFrame {
         tbHome = new javax.swing.JTable();
         btnAdd = new javax.swing.JButton();
         btndelete = new javax.swing.JButton();
-        txtOk = new javax.swing.JLabel();
-        txtError = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         txtUser = new javax.swing.JLabel();
         txtSearch = new javax.swing.JTextField();
         jPanel9 = new javax.swing.JPanel();
-        lbUser = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(209, 198, 189));
 
@@ -187,15 +201,24 @@ public class HomePage extends javax.swing.JFrame {
         jPanel7.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel7.setPreferredSize(new java.awt.Dimension(95, 23));
 
+        txtSup2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtSup2.setForeground(new java.awt.Color(23, 20, 17));
+        txtSup2.setText("       Kho");
+        txtSup2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtSup2MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 89, Short.MAX_VALUE)
+            .addComponent(txtSup2, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addComponent(txtSup2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         boxCategory.setBackground(new java.awt.Color(194, 203, 187));
@@ -228,7 +251,7 @@ public class HomePage extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "id", "Title 2", "Title 3", "Title 4"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -285,22 +308,20 @@ public class HomePage extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
+                        .addContainerGap()
                         .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btndelete, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addComponent(txtOk, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtError, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(23, 23, 23))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -317,12 +338,9 @@ public class HomePage extends javax.swing.JFrame {
                     .addComponent(txtUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btndelete, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtOk, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtError, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btndelete, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -348,15 +366,26 @@ public class HomePage extends javax.swing.JFrame {
         jPanel9.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel9.setPreferredSize(new java.awt.Dimension(95, 23));
 
+        jLabel1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel1.setText(" Xuất Dữ Liệu");
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel1MousePressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 89, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -366,9 +395,6 @@ public class HomePage extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1159, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -383,10 +409,9 @@ public class HomePage extends javax.swing.JFrame {
                         .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbUser, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1171, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -400,8 +425,7 @@ public class HomePage extends javax.swing.JFrame {
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtSearch)
-                    .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                    .addComponent(lbUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -436,7 +460,8 @@ public class HomePage extends javax.swing.JFrame {
                         rs.getString("category_name"),
                         rs.getBytes("images"),
                         rs.getString("describes"),
-                        rs.getFloat("price")
+                        rs.getFloat("price"),
+                        rs.getInt("quantity")
                         
                 );
                 list.add(p);
@@ -460,7 +485,8 @@ public class HomePage extends javax.swing.JFrame {
                         rs.getString("category_name"),
                         rs.getBytes("images"),
                         rs.getString("describes"),
-                        rs.getFloat("price")
+                        rs.getFloat("price"),
+                        rs.getInt("quantity")
                         
                 );
                 list.add(p);
@@ -473,16 +499,20 @@ public class HomePage extends javax.swing.JFrame {
     public void populateTableSearchBox(){
         Product pro = new Product();
         ArrayList<ProductInformation> list = this.getDataSearchBox();
-        String[] colum = {"id","Name","Category","Image","Decritble","Price"};
-        Object[][] rows = new Object[list.size()][6];
+       String[] colum = {"id","Name","Category","Image","Decritble","Price","Quantity"};
+        Object[][] rows = new Object[list.size()][7];
         for(int i = 0 ; i < list.size();i++){
-            rows[i][0] = "Name Book : "+list.get(i).getName();
-            rows[i][2] = "Price :"+list.get(i).getPrice();
-            rows[i][1] = "Category :"+list.get(i).getCategory();
+            rows[i][0] = list.get(i).getId();
+            rows[i][1] = list.get(i).getName();
             rows[i][5] = list.get(i).getPrice();
             rows[i][4] = list.get(i).getDecritble();
+            rows[i][2] = list.get(i).getCategory();
+            rows[i][6] = list.get(i).getQuantity();
             if((list.get(i).getMyImage())!= null){
-                ImageIcon img = new ImageIcon(new ImageIcon(list.get(i).getMyImage()).getImage().getScaledInstance(150,120, Image.SCALE_SMOOTH));
+                byte[] x = list.get(i).getMyImage();
+                Image y = new ImageIcon(x).getImage();
+                Image z = y.getScaledInstance(150,120, Image.SCALE_SMOOTH);
+                ImageIcon img = new ImageIcon(x);                                
                 rows[i][3] = img;
             }else{
                 rows[i][3]=null;
@@ -492,20 +522,32 @@ public class HomePage extends javax.swing.JFrame {
         tbHome.setModel(model);
         tbHome.setRowHeight(100);
         tbHome.getColumnModel().getColumn(3).setPreferredWidth(120);
+        tbHome.getColumnModel().getColumn(3).setPreferredWidth(120);
+        tbHome.getColumnModel().getColumn(0).setHeaderValue("Id");
+        tbHome.getColumnModel().getColumn(1).setHeaderValue("Name");
+        tbHome.getColumnModel().getColumn(2).setHeaderValue("Category");
+        tbHome.getColumnModel().getColumn(3).setHeaderValue("Image");
+        tbHome.getColumnModel().getColumn(4).setHeaderValue("Decritble");
+        tbHome.getColumnModel().getColumn(5).setHeaderValue("Price");
+        tbHome.getColumnModel().getColumn(6).setHeaderValue("Quantity");
     }
     public void populateTableSearchBtn(){
         Product pro = new Product();
         ArrayList<ProductInformation> list = this.getDataSearchBtn();
-        String[] colum = {"id","Name","Category","Image","Decritble","Price"};
-        Object[][] rows = new Object[list.size()][6];
+        String[] colum = {"id","Name","Category","Image","Decritble","Price","Quantity"};
+        Object[][] rows = new Object[list.size()][7];
         for(int i = 0 ; i < list.size();i++){
-            rows[i][0] = "Name Book : "+list.get(i).getName();
-            rows[i][2] = "Price :"+list.get(i).getPrice();
-            rows[i][1] = "Category :"+list.get(i).getCategory();
+            rows[i][0] = list.get(i).getId();
+            rows[i][1] = list.get(i).getName();
             rows[i][5] = list.get(i).getPrice();
             rows[i][4] = list.get(i).getDecritble();
+            rows[i][2] = list.get(i).getCategory();
+            rows[i][6] = list.get(i).getQuantity();
             if((list.get(i).getMyImage())!= null){
-                ImageIcon img = new ImageIcon(new ImageIcon(list.get(i).getMyImage()).getImage().getScaledInstance(150,120, Image.SCALE_SMOOTH));
+                byte[] x = list.get(i).getMyImage();
+                Image y = new ImageIcon(x).getImage();
+                Image z = y.getScaledInstance(150,120, Image.SCALE_SMOOTH);
+                ImageIcon img = new ImageIcon(x);                                
                 rows[i][3] = img;
             }else{
                 rows[i][3]=null;
@@ -515,6 +557,14 @@ public class HomePage extends javax.swing.JFrame {
         tbHome.setModel(model);
         tbHome.setRowHeight(100);
         tbHome.getColumnModel().getColumn(3).setPreferredWidth(120);
+        tbHome.getColumnModel().getColumn(3).setPreferredWidth(120);
+        tbHome.getColumnModel().getColumn(0).setHeaderValue("Id");
+        tbHome.getColumnModel().getColumn(1).setHeaderValue("Name");
+        tbHome.getColumnModel().getColumn(2).setHeaderValue("Category");
+        tbHome.getColumnModel().getColumn(3).setHeaderValue("Image");
+        tbHome.getColumnModel().getColumn(4).setHeaderValue("Decritble");
+        tbHome.getColumnModel().getColumn(5).setHeaderValue("Price");
+        tbHome.getColumnModel().getColumn(6).setHeaderValue("Quantity");
     }
     private void boxCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxCategoryActionPerformed
             
@@ -565,6 +615,48 @@ public class HomePage extends javax.swing.JFrame {
         home.setVisible(true);
     }//GEN-LAST:event_jPanel4MouseClicked
     AddProduct show_data_product = new AddProduct();
+    private void txtSup1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtSup1MouseClicked
+        this.setVisible(false);
+        Category_F category = new Category_F();
+        category.setVisible(true);
+    }//GEN-LAST:event_txtSup1MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.setVisible(false);
+        FormLogin loginUser = new FormLogin();
+        loginUser.setVisible(true);
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btndeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndeleteActionPerformed
+        int row = tbHome.getSelectedRow();
+        try {
+            Statement statement = cnn.createStatement();
+            TableModel model = tbHome.getModel();
+            String id = model.getValueAt(row,0).toString();
+            Product.DeleteProduct(id);
+            this.setVisible(false);
+            HomePage deleteLoad = new HomePage();
+            deleteLoad.setVisible(true);
+            statement.close();
+        } catch (SQLException ex) {
+        }
+    }//GEN-LAST:event_btndeleteActionPerformed
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        this.setVisible(false);
+        AddProduct add = new AddProduct();
+        add.setVisible(true);
+    }//GEN-LAST:event_btnAddActionPerformed
+
+    private void tbHomeMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbHomeMouseReleased
+
+    }//GEN-LAST:event_tbHomeMouseReleased
+
+    private void tbHomeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbHomeMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tbHomeMousePressed
+
     private void tbHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbHomeMouseClicked
         int row = tbHome.getSelectedRow();
         TableModel model = tbHome.getModel();
@@ -577,6 +669,7 @@ public class HomePage extends javax.swing.JFrame {
         String image = model.getValueAt(row,3).toString();
         String describes = model.getValueAt(row, 4).toString();
         String price = model.getValueAt(row, 5).toString();
+        String quantity = model.getValueAt(row, 6).toString();
         show_data_product.setVisible(true);
         show_data_product.pack();
         show_data_product.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -586,53 +679,48 @@ public class HomePage extends javax.swing.JFrame {
         show_data_product.lbl_image_list.setIcon(image3);
         show_data_product.txtDecribe.setText(describes);
         show_data_product.txtPrice.setText(price);
-     
-        
+        show_data_product.txtQuantity.setText(quantity);
+
     }//GEN-LAST:event_tbHomeMouseClicked
 
-    private void txtSup1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtSup1MouseClicked
-        this.setVisible(false);
-        Category_F category = new Category_F();
-        category.setVisible(true);
-    }//GEN-LAST:event_txtSup1MouseClicked
+    private void txtSup2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtSup2MouseClicked
+       this.setVisible(false);
+       repositoryF re =new repositoryF();
+       re.setVisible(true);
+       
+    }//GEN-LAST:event_txtSup2MouseClicked
+     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+    }//GEN-LAST:event_jLabel1MouseClicked
 
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        this.setVisible(false);
-        AddProduct add = new AddProduct();
-        add.setVisible(true);
-    }//GEN-LAST:event_btnAddActionPerformed
-    
-    private void btndeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndeleteActionPerformed
-        int row = tbHome.getSelectedRow();
-        try {
-            Statement statement = cnn.createStatement();
-            TableModel model = tbHome.getModel();
-            String id = model.getValueAt(row,0).toString();
-            Product.DeleteProduct(id);
-            txtOk.setText("Delete is Ok ");
-            this.setVisible(false);
-            HomePage deleteLoad = new HomePage();
-            deleteLoad.setVisible(true);
-            statement.close();
-        } catch (SQLException ex) {
-            txtError.setText("Delete is Error ");
-        }
-    }//GEN-LAST:event_btndeleteActionPerformed
-
-    private void tbHomeMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbHomeMouseReleased
-        
-    }//GEN-LAST:event_tbHomeMouseReleased
-
-    private void tbHomeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbHomeMousePressed
+    private void jLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tbHomeMousePressed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.setVisible(false);
-        loginUser.setVisible(true);
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
-    public void tableData(){
+         File file =  new File("/home/son/Desktop/Project_2_book_store/Export");
+        JFileChooser filecchooser = new JFileChooser(file);
+        filecchooser.setDialogTitle("File Save");
+        int userSelection = filecchooser.showSaveDialog(this);
+        if(userSelection == JFileChooser.APPROVE_OPTION){
+            File fileToSave = filecchooser.getSelectedFile();
+            FileWriter fw;
+            try {
+                fw = new FileWriter(fileToSave);
+                BufferedWriter bw = new BufferedWriter(fw);
+                for(int i = 0 ; i < tbHome.getRowCount() ; i++){
+                    for(int j = 0 ; j <tbHome.getColumnCount();j++){
+                        bw.write(tbHome.getValueAt(i,j).toString()+", ");
+                    }
+                    bw.newLine();
+                }
+                bw.close();
+                fw.close();
+                JOptionPane.showMessageDialog(null, " Susses laoding file  !!!");
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, " Error massage !!!");
+            }
+            
+        }
+    }//GEN-LAST:event_jLabel1MousePressed
+   
+     public void tableData(){
         String sql = "Select * from Product";
         try {
             pst = cnn.prepareStatement(sql);
@@ -647,26 +735,38 @@ public class HomePage extends javax.swing.JFrame {
     public void populateTable(){
         Product pro = new Product();
         ArrayList<ProductInformation> list = pro.getData();
-        String[] colum = {"id","Name","Category","Image","Decritble","Price"};
-        Object[][] rows = new Object[list.size()][6];
+        String[] colum = {"id","Name","Category","Image","Decritble","Price","Quantity"};
+        Object[][] rows = new Object[list.size()][7];
         for(int i = 0 ; i < list.size();i++){
             rows[i][0] = list.get(i).getId();
             rows[i][1] = list.get(i).getName();
             rows[i][5] = list.get(i).getPrice();
             rows[i][4] = list.get(i).getDecritble();
             rows[i][2] = list.get(i).getCategory();
+            rows[i][6] = list.get(i).getQuantity();
             if((list.get(i).getMyImage())!= null){
-                ImageIcon img = new ImageIcon(new ImageIcon(list.get(i).getMyImage()).getImage().getScaledInstance(150,120, Image.SCALE_SMOOTH));
+                byte[] x = list.get(i).getMyImage();
+                Image y = new ImageIcon(x).getImage();
+                Image z = y.getScaledInstance(150,120, Image.SCALE_SMOOTH);
+                ImageIcon img = new ImageIcon(x);                                
                 rows[i][3] = img;
             }else{
                 rows[i][3]=null;
             }
+        
         }
         
         TheModel model = new TheModel(rows, colum);
         tbHome.setModel(model);
         tbHome.setRowHeight(120);
         tbHome.getColumnModel().getColumn(3).setPreferredWidth(120);
+        tbHome.getColumnModel().getColumn(0).setHeaderValue("Id");
+        tbHome.getColumnModel().getColumn(1).setHeaderValue("Name");
+        tbHome.getColumnModel().getColumn(2).setHeaderValue("Category");
+        tbHome.getColumnModel().getColumn(3).setHeaderValue("Image");
+        tbHome.getColumnModel().getColumn(4).setHeaderValue("Decritble");
+        tbHome.getColumnModel().getColumn(5).setHeaderValue("Price");
+        tbHome.getColumnModel().getColumn(6).setHeaderValue("Quantity");
        }
 
     /**
@@ -725,6 +825,7 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btndelete;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -735,14 +836,12 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lbUser;
     private javax.swing.JTable tbHome;
     private javax.swing.JLabel txtBook;
-    private javax.swing.JLabel txtError;
-    private javax.swing.JLabel txtOk;
     private javax.swing.JTextField txtSearch;
     private javax.swing.JLabel txtSup;
     private javax.swing.JLabel txtSup1;
+    private javax.swing.JLabel txtSup2;
     public javax.swing.JLabel txtUser;
     private javax.swing.JLabel txthome;
     // End of variables declaration//GEN-END:variables

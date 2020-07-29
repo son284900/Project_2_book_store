@@ -44,6 +44,7 @@ public class EditCategory extends javax.swing.JFrame {
         btnAdd = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(230, 230, 255));
 
@@ -59,7 +60,7 @@ public class EditCategory extends javax.swing.JFrame {
         });
 
         btnEdit.setBackground(new java.awt.Color(51, 173, 255));
-        btnEdit.setText("Edit");
+        btnEdit.setText("Save");
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditActionPerformed(evt);
@@ -85,6 +86,7 @@ public class EditCategory extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(102, 0, 0));
         jLabel3.setText("Id Category");
 
+        txtId.setEditable(false);
         txtId.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtIdMouseClicked(evt);

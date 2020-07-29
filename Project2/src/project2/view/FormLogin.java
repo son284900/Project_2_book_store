@@ -5,12 +5,15 @@
  */
 package project2.view;
 
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /**
@@ -29,7 +32,12 @@ public class FormLogin extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
 
     }
-
+//    public  void setColor(JButton b1){
+//        b1.setForeground(new Color(255,102,102));
+//    }
+    public void resetColor(JButton bl1){
+        bl1.setForeground(new Color(255,255,255));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -53,6 +61,7 @@ public class FormLogin extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         Login.setBackground(new java.awt.Color(252, 245, 245));
         Login.setBorder(null);
@@ -129,6 +138,14 @@ public class FormLogin extends javax.swing.JFrame {
 
         btn_cancel1.setBackground(new java.awt.Color(255, 102, 102));
         btn_cancel1.setText("Cancel");
+        btn_cancel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_cancel1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_cancel1MouseExited(evt);
+            }
+        });
         btn_cancel1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_cancel1ActionPerformed(evt);
@@ -138,7 +155,7 @@ public class FormLogin extends javax.swing.JFrame {
         btn_cancel1.setBounds(160, 290, 81, 49);
 
         txtRegister.setForeground(new java.awt.Color(17, 28, 254));
-        txtRegister.setText("            Register");
+        txtRegister.setText("          Register");
         txtRegister.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtRegisterMouseClicked(evt);
@@ -206,9 +223,7 @@ public class FormLogin extends javax.swing.JFrame {
                                         HomePage adm = new HomePage();
                                         Category_F loginUserCt = new Category_F();
                                         adm.setVisible(true);
-//                                        adm.txtUser.setText("User  : "+ this.getUser());
-//                                        loginUserCt.txtUser.setText("User  : "+ this.getUser());
-                                        JOptionPane.showMessageDialog(null,"Hello : " +this.getUser(),"Notify",1);
+                                        JOptionPane.showMessageDialog(null,"Wellcome to app  : " +this.getUser(),"Notify",1);
                                     }
                                 else
                                    txtError.setText("Error login --- Check again user name and password");
@@ -241,15 +256,28 @@ public class FormLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_loginActionPerformed
 
     private void btn_cancel1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancel1ActionPerformed
-        // TODO add your handling code here:
+       System.exit(0);
     }//GEN-LAST:event_btn_cancel1ActionPerformed
 
     private void txtRegisterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtRegisterMouseClicked
+
       this.setVisible(false);
       RegisterForm register = new RegisterForm();
       register.setVisible(true);
     }//GEN-LAST:event_txtRegisterMouseClicked
-     private boolean validate_login(String username, String password) {
+
+    private void btn_cancel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cancel1MouseEntered
+        // TODO add your handling code here:
+//        setColor(btnReset);
+        
+    }//GEN-LAST:event_btn_cancel1MouseEntered
+
+    private void btn_cancel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cancel1MouseExited
+        // TODO add your handling code here:
+//        resetColor(btnReset);
+    }//GEN-LAST:event_btn_cancel1MouseExited
+     
+    private boolean validate_login(String username, String password) {
        try{           
             Class.forName("com.mysql.jdbc.Driver"); 
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Project2?" + "user=root&password=123456789");     

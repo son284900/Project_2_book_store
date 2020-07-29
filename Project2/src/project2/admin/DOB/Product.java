@@ -16,6 +16,7 @@ import project2.DbUtils;
 import static project2.admin.DOB.ConnectDb.getConnection;
 import project2.admin.infofmation_admin.ProductInformation;
 import project2.view.HomePage;
+import static project2.view.HomePage.rs;
 /**
  *
  * @author son
@@ -74,7 +75,8 @@ public class Product {
                         rs.getString("category_name"),
                         rs.getBytes("images"),
                         rs.getString("describes"),
-                        rs.getFloat("price")
+                        rs.getFloat("price"),
+                        rs.getInt("quantity")
                         
                 );
                 list.add(p);

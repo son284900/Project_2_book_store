@@ -18,7 +18,7 @@ public class Register {
     public static PreparedStatement pst = null;
     public static ResultSet rs =null;
     public static Connection cnn = ConnectDb.getConnection();
-    public static void InsertCategory(String name , String pass){
+    public static void Insert(String name , String pass){
         String sql ="insert into Admin (username,password) VALUES (?,?)";
         try {
             pst = cnn.prepareStatement(sql);
@@ -29,5 +29,7 @@ public class Register {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,"Add "+name,"Notify Error",2);
         }
+    }
+    public static void ReadJsonDb(){
     }
 }

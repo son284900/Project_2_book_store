@@ -10,6 +10,10 @@ import java.awt.event.KeyEvent;
 import java.awt.Image;
 import java.awt.desktop.PreferencesEvent;
 import java.awt.event.KeyEvent;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -44,7 +48,7 @@ public class Category_F extends javax.swing.JFrame {
     public static ResultSet rs =null;
     public static Connection cnn = ConnectDb.getConnection();
     AddProduct show_data_product = new AddProduct();
-    String sql="Select * FROM Category order by ID asc";
+    String sql="Select ID,Name FROM Category order by ID asc";
     /**
      * Creates new form Cat
      */
@@ -76,6 +80,7 @@ public class Category_F extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         txtSup1 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
+        txtSup2 = new javax.swing.JLabel();
         boxCategory = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
@@ -85,13 +90,13 @@ public class Category_F extends javax.swing.JFrame {
         btndelete = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         txtUser = new javax.swing.JLabel();
-        txtOk = new javax.swing.JLabel();
-        txtError = new javax.swing.JLabel();
         txtSearch = new javax.swing.JTextField();
         jPanel9 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         lbUser = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(209, 198, 189));
 
@@ -190,15 +195,24 @@ public class Category_F extends javax.swing.JFrame {
         jPanel7.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel7.setPreferredSize(new java.awt.Dimension(95, 23));
 
+        txtSup2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtSup2.setForeground(new java.awt.Color(23, 20, 17));
+        txtSup2.setText("       Kho");
+        txtSup2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtSup2MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 89, Short.MAX_VALUE)
+            .addComponent(txtSup2, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addComponent(txtSup2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         boxCategory.setBackground(new java.awt.Color(194, 203, 187));
@@ -271,24 +285,20 @@ public class Category_F extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(15, 15, 15)
                 .addComponent(btnAddCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btndelete, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(txtOk, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtError, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(239, 239, 239))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -305,10 +315,8 @@ public class Category_F extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(btnAddCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(btndelete, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtOk, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtError, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(28, Short.MAX_VALUE))
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         txtSearch.setForeground(new java.awt.Color(204, 204, 204));
@@ -330,15 +338,26 @@ public class Category_F extends javax.swing.JFrame {
         jPanel9.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel9.setPreferredSize(new java.awt.Dimension(95, 23));
 
+        jLabel1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel1.setText(" Xuất Dữ Liệu");
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel1MousePressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 89, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -347,24 +366,26 @@ public class Category_F extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(boxCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbUser, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(boxCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbUser, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1162, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -380,7 +401,7 @@ public class Category_F extends javax.swing.JFrame {
                     .addComponent(txtSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
                     .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
                     .addComponent(lbUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -420,7 +441,8 @@ public class Category_F extends javax.swing.JFrame {
                         rs.getString("category_name"),
                         rs.getBytes("images"),
                         rs.getString("describes"),
-                        rs.getFloat("price")
+                        rs.getFloat("price"),
+                        rs.getInt("quantity")
                         
                 );
                 list.add(p);
@@ -444,7 +466,8 @@ public class Category_F extends javax.swing.JFrame {
                         rs.getString("category_name"),
                         rs.getBytes("images"),
                         rs.getString("describes"),
-                        rs.getFloat("price")
+                        rs.getFloat("price"),
+                        rs.getInt("quantity")
                         
                 );
                 list.add(p);
@@ -457,16 +480,20 @@ public class Category_F extends javax.swing.JFrame {
     public void populateTableSearchBox(){
         Product pro = new Product();
         ArrayList<ProductInformation> list = this.getDataSearchBox();
-        String[] colum = {"id","Name","Category","Image","Decritble","Price"};
-        Object[][] rows = new Object[list.size()][6];
+        String[] colum = {"id","Name","Category","Image","Decritble","Price","Quantity"};
+        Object[][] rows = new Object[list.size()][7];
         for(int i = 0 ; i < list.size();i++){
-            rows[i][0] = "Name Book : "+list.get(i).getName();
-            rows[i][2] = "Price :"+list.get(i).getPrice();
-            rows[i][1] = "Category :"+list.get(i).getCategory();
+            rows[i][0] = list.get(i).getId();
+            rows[i][1] = list.get(i).getName();
             rows[i][5] = list.get(i).getPrice();
             rows[i][4] = list.get(i).getDecritble();
+            rows[i][2] = list.get(i).getCategory();
+            rows[i][6] = list.get(i).getQuantity();
             if((list.get(i).getMyImage())!= null){
-                ImageIcon img = new ImageIcon(new ImageIcon(list.get(i).getMyImage()).getImage().getScaledInstance(150,120, Image.SCALE_SMOOTH));
+                byte[] x = list.get(i).getMyImage();
+                Image y = new ImageIcon(x).getImage();
+                Image z = y.getScaledInstance(150,120, Image.SCALE_SMOOTH);
+                ImageIcon img = new ImageIcon(x);                                
                 rows[i][3] = img;
             }else{
                 rows[i][3]=null;
@@ -476,20 +503,32 @@ public class Category_F extends javax.swing.JFrame {
         tbHome.setModel(model);
         tbHome.setRowHeight(100);
         tbHome.getColumnModel().getColumn(3).setPreferredWidth(120);
+        tbHome.getColumnModel().getColumn(3).setPreferredWidth(120);
+        tbHome.getColumnModel().getColumn(0).setHeaderValue("Id");
+        tbHome.getColumnModel().getColumn(1).setHeaderValue("Name");
+        tbHome.getColumnModel().getColumn(2).setHeaderValue("Category");
+        tbHome.getColumnModel().getColumn(3).setHeaderValue("Image");
+        tbHome.getColumnModel().getColumn(4).setHeaderValue("Decritble");
+        tbHome.getColumnModel().getColumn(5).setHeaderValue("Price");
+        tbHome.getColumnModel().getColumn(6).setHeaderValue("Quantity");
     }
     public void populateTableSearchBtn(){
         Product pro = new Product();
         ArrayList<ProductInformation> list = this.getDataSearchBtn();
-        String[] colum = {"id","Name","Category","Image","Decritble","Price"};
-        Object[][] rows = new Object[list.size()][6];
+        String[] colum = {"id","Name","Category","Image","Decritble","Price","Quantity"};
+        Object[][] rows = new Object[list.size()][7];
         for(int i = 0 ; i < list.size();i++){
-            rows[i][0] = "Name Book : "+list.get(i).getName();
-            rows[i][2] = "Price :"+list.get(i).getPrice();
-            rows[i][1] = "Category :"+list.get(i).getCategory();
+            rows[i][0] = list.get(i).getId();
+            rows[i][1] = list.get(i).getName();
             rows[i][5] = list.get(i).getPrice();
             rows[i][4] = list.get(i).getDecritble();
+            rows[i][2] = list.get(i).getCategory();
+            rows[i][6] = list.get(i).getQuantity();
             if((list.get(i).getMyImage())!= null){
-                ImageIcon img = new ImageIcon(new ImageIcon(list.get(i).getMyImage()).getImage().getScaledInstance(150,120, Image.SCALE_SMOOTH));
+                byte[] x = list.get(i).getMyImage();
+                Image y = new ImageIcon(x).getImage();
+                Image z = y.getScaledInstance(150,120, Image.SCALE_SMOOTH);
+                ImageIcon img = new ImageIcon(x);                                
                 rows[i][3] = img;
             }else{
                 rows[i][3]=null;
@@ -499,6 +538,14 @@ public class Category_F extends javax.swing.JFrame {
         tbHome.setModel(model);
         tbHome.setRowHeight(100);
         tbHome.getColumnModel().getColumn(3).setPreferredWidth(120);
+        tbHome.getColumnModel().getColumn(3).setPreferredWidth(120);
+        tbHome.getColumnModel().getColumn(0).setHeaderValue("Id");
+        tbHome.getColumnModel().getColumn(1).setHeaderValue("Name");
+        tbHome.getColumnModel().getColumn(2).setHeaderValue("Category");
+        tbHome.getColumnModel().getColumn(3).setHeaderValue("Image");
+        tbHome.getColumnModel().getColumn(4).setHeaderValue("Decritble");
+        tbHome.getColumnModel().getColumn(5).setHeaderValue("Price");
+        tbHome.getColumnModel().getColumn(6).setHeaderValue("Quantity");
     }
     public void tableData(){
         String sql = "Select * from Product";
@@ -515,16 +562,20 @@ public class Category_F extends javax.swing.JFrame {
     public void populateTable(){
         Product pro = new Product();
         ArrayList<ProductInformation> list = pro.getData();
-        String[] colum = {"id","Name","Category","Image","Decritble","Price"};
-        Object[][] rows = new Object[list.size()][6];
+        String[] colum = {"id","Name","Category","Image","Decritble","Price","Quantity"};
+        Object[][] rows = new Object[list.size()][7];
         for(int i = 0 ; i < list.size();i++){
             rows[i][0] = list.get(i).getId();
             rows[i][1] = list.get(i).getName();
             rows[i][5] = list.get(i).getPrice();
             rows[i][4] = list.get(i).getDecritble();
             rows[i][2] = list.get(i).getCategory();
+            rows[i][6] = list.get(i).getQuantity();
             if((list.get(i).getMyImage())!= null){
-                ImageIcon img = new ImageIcon(new ImageIcon(list.get(i).getMyImage()).getImage().getScaledInstance(150,120, Image.SCALE_SMOOTH));
+                byte[] x = list.get(i).getMyImage();
+                Image y = new ImageIcon(x).getImage();
+                Image z = y.getScaledInstance(150,120, Image.SCALE_SMOOTH);
+                ImageIcon img = new ImageIcon(x);                                
                 rows[i][3] = img;
             }else{
                 rows[i][3]=null;
@@ -534,6 +585,14 @@ public class Category_F extends javax.swing.JFrame {
         tbHome.setModel(model);
         tbHome.setRowHeight(120);
         tbHome.getColumnModel().getColumn(3).setPreferredWidth(120);
+        tbHome.getColumnModel().getColumn(3).setPreferredWidth(120);
+        tbHome.getColumnModel().getColumn(0).setHeaderValue("Id");
+        tbHome.getColumnModel().getColumn(1).setHeaderValue("Name");
+        tbHome.getColumnModel().getColumn(2).setHeaderValue("Category");
+        tbHome.getColumnModel().getColumn(3).setHeaderValue("Image");
+        tbHome.getColumnModel().getColumn(4).setHeaderValue("Decritble");
+        tbHome.getColumnModel().getColumn(5).setHeaderValue("Price");
+        tbHome.getColumnModel().getColumn(6).setHeaderValue("Quantity");
 //
     
        }
@@ -621,18 +680,56 @@ public class Category_F extends javax.swing.JFrame {
             Category_F deleteLoad = new Category_F();
             deleteLoad.setVisible(true);
             Statement statement = cnn.createStatement();
-            txtOk.setText("Delete is Ok ");
             statement.close();
         } catch (SQLException ex) {
-            txtError.setText("Delete is Error ");
         }
     }//GEN-LAST:event_btndeleteActionPerformed
-    FormLogin loginUser = new FormLogin();
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.setVisible(false);
+        FormLogin loginUser = new FormLogin();
         loginUser.setVisible(true);
 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtSup2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtSup2MouseClicked
+        this.setVisible(false);
+        repositoryF re =new repositoryF();
+        re.setVisible(true);
+
+    }//GEN-LAST:event_txtSup2MouseClicked
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MousePressed
+        // TODO add your handling code here:
+        File file =  new File("/home/son/Desktop/Project_2_book_store/Export");
+        JFileChooser filecchooser = new JFileChooser(file);
+        filecchooser.setDialogTitle("File Save");
+        int userSelection = filecchooser.showSaveDialog(this);
+        if(userSelection == JFileChooser.APPROVE_OPTION){
+            File fileToSave = filecchooser.getSelectedFile();
+            FileWriter fw;
+            try {
+                fw = new FileWriter(fileToSave);
+                BufferedWriter bw = new BufferedWriter(fw);
+                for(int i = 0 ; i < tbHome.getRowCount() ; i++){
+                    for(int j = 0 ; j <tbHome.getColumnCount();j++){
+                        bw.write(tbHome.getValueAt(i,j).toString()+", ");
+                    }
+                    bw.newLine();
+                    JOptionPane.showMessageDialog(null, " Susses laoding file  !!!");
+
+                }
+                bw.close();
+                fw.close();
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, " Error massage !!!");
+            }
+
+        }
+    }//GEN-LAST:event_jLabel1MousePressed
 
     /**
      * @param args the command line arguments
@@ -675,6 +772,7 @@ public class Category_F extends javax.swing.JFrame {
     private javax.swing.JButton btnAddCategory;
     private javax.swing.JButton btndelete;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -688,11 +786,10 @@ public class Category_F extends javax.swing.JFrame {
     private javax.swing.JLabel lbUser;
     private javax.swing.JTable tbHome;
     private javax.swing.JLabel txtBook;
-    private javax.swing.JLabel txtError;
-    private javax.swing.JLabel txtOk;
     private javax.swing.JTextField txtSearch;
     private javax.swing.JLabel txtSup;
     private javax.swing.JLabel txtSup1;
+    private javax.swing.JLabel txtSup2;
     public javax.swing.JLabel txtUser;
     private javax.swing.JLabel txthome;
     // End of variables declaration//GEN-END:variables
