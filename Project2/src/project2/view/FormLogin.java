@@ -6,11 +6,15 @@
 package project2.view;
 
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -58,7 +62,7 @@ public class FormLogin extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         btn_cancel1 = new javax.swing.JButton();
         txtRegister = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lbImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -164,10 +168,10 @@ public class FormLogin extends javax.swing.JFrame {
         Login.add(txtRegister);
         txtRegister.setBounds(290, 340, 150, 30);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("/home/son/Desktop/Project_2_book_store/Project2/src/project2/image/benjamin-thomas-qDEvPXs9PwY-unsplash.jpg")); // NOI18N
-        jLabel3.setText("jLabel3");
-        Login.add(jLabel3);
-        jLabel3.setBounds(0, 0, 640, 400);
+        lbImage.setIcon(new javax.swing.ImageIcon("/home/son/Desktop/Project_2_book_store/Project2/src/project2/image/benjamin-thomas-qDEvPXs9PwY-unsplash.jpg")); // NOI18N
+        lbImage.setText("jLabel3");
+        Login.add(lbImage);
+        lbImage.setBounds(0, 0, 640, 400);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -208,6 +212,18 @@ public class FormLogin extends javax.swing.JFrame {
     private void pass_valActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pass_valActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_pass_valActionPerformed
+     public  void LoginSave(){
+        String user = user_val.getText();
+        char[] pass = pass_val.getPassword();
+        String password = String.copyValueOf(pass);
+        if(validate_login(user,password)){
+            user_val.setText(user);
+            pass_val.setText(password);
+        }else{
+            user_val.setText("aaaaa");
+            pass_val.setText("acc");
+         }
+    }
     public static String userName;
     private void pass_valKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pass_valKeyPressed
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
@@ -218,12 +234,14 @@ public class FormLogin extends javax.swing.JFrame {
                                 char[] pass = pass_val.getPassword();
                                 String password = String.copyValueOf(pass);
                                 if(validate_login(user,password)){
+                                        
                                         userName = this.user_val.getText();
                                         this.setVisible(false);
                                         HomePage adm = new HomePage();
                                         Category_F loginUserCt = new Category_F();
+                                       
                                         adm.setVisible(true);
-                                        JOptionPane.showMessageDialog(null,"Wellcome to app  : " +this.getUser(),"Notify",1);
+//                                        JOptionPane.showMessageDialog(null,"Wellcome to app  : " +this.getUser(),"Notify",1);
                                     }
                                 else
                                    txtError.setText("Error login --- Check again user name and password");
@@ -242,11 +260,13 @@ public class FormLogin extends javax.swing.JFrame {
                         char[] pass = pass_val.getPassword();
                         String password = String.copyValueOf(pass);
                         if(validate_login(user,password)){
+                                userName = this.user_val.getText();
                                 this.setVisible(false);
                                 HomePage adm = new HomePage();
+                                Category_F loginUserCt = new Category_F();
+
                                 adm.setVisible(true);
-                
-                
+                                JOptionPane.showMessageDialog(null,"Wellcome to app  : " +this.getUser(),"Notify",1);
                             }
                         else
                            txtError.setText("Error login --- Check again user name and password");
@@ -337,8 +357,8 @@ public class FormLogin extends javax.swing.JFrame {
     private javax.swing.JButton btn_login;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel lbImage;
     private javax.swing.JPasswordField pass_val;
     private javax.swing.JLabel txtError;
     private javax.swing.JLabel txtRegister;

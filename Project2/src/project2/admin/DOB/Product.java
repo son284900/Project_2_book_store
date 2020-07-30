@@ -68,8 +68,9 @@ public class Product {
             String sql = "select * from Product";
             pst = cnn.prepareStatement(sql);
             rs = pst.executeQuery();
+            ProductInformation p;
             while(rs.next()){
-                ProductInformation p = new ProductInformation(
+                p = new ProductInformation(
                         rs.getString("id_product"),
                         rs.getString("name_product"),
                         rs.getString("category_name"),

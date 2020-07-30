@@ -43,6 +43,9 @@ import project2.admin.DOB.UpdateTable;
 import project2.admin.formAdd.AddProduct;
 import project2.admin.infofmation_admin.ProductInformation;
 import static project2.view.Category_F.rs;
+import java.time.format.DateTimeFormatter;  
+import java.time.LocalDateTime;   
+import project2.admin.DOB.History;
 
 
 /**
@@ -51,7 +54,9 @@ import static project2.view.Category_F.rs;
  */
 
 public class HomePage extends javax.swing.JFrame {
-
+     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
+     LocalDateTime now = LocalDateTime.now();
+     String nowTime = dtf.format(now);
     /**
      * Creates new form HomePage
      */
@@ -78,7 +83,7 @@ public class HomePage extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         txtBook = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        txtSup = new javax.swing.JLabel();
+        txtHistory = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         txtSup1 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
@@ -107,7 +112,7 @@ public class HomePage extends javax.swing.JFrame {
         txthome.setBackground(new java.awt.Color(235, 57, 23));
         txthome.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N
         txthome.setForeground(new java.awt.Color(236, 224, 224));
-        txthome.setText(" Quản Lý Sách");
+        txthome.setText(" Quản Lý Truyện");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -135,7 +140,7 @@ public class HomePage extends javax.swing.JFrame {
 
         txtBook.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N
         txtBook.setForeground(new java.awt.Color(25, 16, 7));
-        txtBook.setText("  Sách");
+        txtBook.setText(" Truyện");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -155,19 +160,24 @@ public class HomePage extends javax.swing.JFrame {
         jPanel5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel5.setPreferredSize(new java.awt.Dimension(95, 23));
 
-        txtSup.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        txtSup.setForeground(new java.awt.Color(23, 20, 17));
-        txtSup.setText(" Nhóm DỊch");
+        txtHistory.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtHistory.setForeground(new java.awt.Color(23, 20, 17));
+        txtHistory.setText("   Lịch sử");
+        txtHistory.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtHistoryMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtSup, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
+            .addComponent(txtHistory, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtSup, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(txtHistory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPanel6.setBackground(new java.awt.Color(105, 234, 21));
@@ -713,12 +723,21 @@ public class HomePage extends javax.swing.JFrame {
                 bw.close();
                 fw.close();
                 JOptionPane.showMessageDialog(null, " Susses laoding file  !!!");
+                String name_file = fileToSave.getName();
+                History.Insert(name_file, this.nowTime);
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(null, " Error massage !!!");
             }
             
         }
     }//GEN-LAST:event_jLabel1MousePressed
+
+    private void txtHistoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtHistoryMouseClicked
+        // TODO add your handling code here:
+        this.setVisible(false);
+        HistoryForm his = new HistoryForm();
+        his.setVisible(true);
+    }//GEN-LAST:event_txtHistoryMouseClicked
    
      public void tableData(){
         String sql = "Select * from Product";
@@ -747,7 +766,7 @@ public class HomePage extends javax.swing.JFrame {
             if((list.get(i).getMyImage())!= null){
                 byte[] x = list.get(i).getMyImage();
                 Image y = new ImageIcon(x).getImage();
-                Image z = y.getScaledInstance(150,120, Image.SCALE_SMOOTH);
+                Image z = y.getScaledInstance(150, 120, Image.SCALE_SMOOTH);
                 ImageIcon img = new ImageIcon(x);                                
                 rows[i][3] = img;
             }else{
@@ -759,7 +778,7 @@ public class HomePage extends javax.swing.JFrame {
         TheModel model = new TheModel(rows, colum);
         tbHome.setModel(model);
         tbHome.setRowHeight(120);
-        tbHome.getColumnModel().getColumn(3).setPreferredWidth(120);
+        tbHome.getColumnModel().getColumn(3).setPreferredWidth(150);
         tbHome.getColumnModel().getColumn(0).setHeaderValue("Id");
         tbHome.getColumnModel().getColumn(1).setHeaderValue("Name");
         tbHome.getColumnModel().getColumn(2).setHeaderValue("Category");
@@ -838,8 +857,8 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbHome;
     private javax.swing.JLabel txtBook;
+    private javax.swing.JLabel txtHistory;
     private javax.swing.JTextField txtSearch;
-    private javax.swing.JLabel txtSup;
     private javax.swing.JLabel txtSup1;
     private javax.swing.JLabel txtSup2;
     public javax.swing.JLabel txtUser;

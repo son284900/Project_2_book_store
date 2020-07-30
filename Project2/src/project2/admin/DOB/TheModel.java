@@ -13,36 +13,44 @@ import javax.swing.table.AbstractTableModel;
  * @author son
  */
 public class TheModel extends AbstractTableModel{
-    private String[] col;
-    private Object[][] row;
+    private String[] columns;
+    private Object[][] rows;
+    
     public TheModel(){}
-    public TheModel(Object[][] data,String[] col){
-        this.col=col;
-        this.row=data;
+    
+    public TheModel(Object[][] data, String[] columnName){
+    
+        this.rows = data;
+        this.columns = columnName;
     }
-    public Class getColumClass(int col){
-        if(col== 3){
+
+    
+    public Class getColumnClass(int column){
+// 4 is the index of the column image
+        if(column == 3){
             return Icon.class;
-        }else{
-            return getValueAt(0, col).getClass();
+        }
+        else{
+            return getValueAt(0,column).getClass();
         }
     }
-    @Override
+    
+    
     public int getRowCount() {
-      return this.row.length;
+     return this.rows.length;
     }
 
-    @Override
     public int getColumnCount() {
-        return this.col.length;
+     return this.columns.length;
     }
 
-    @Override
-    public Object getValueAt(int rowIndex, int colIndex) {
-        return this.row[rowIndex][colIndex];
+    
+    public Object getValueAt(int rowIndex, int columnIndex) {
+    
+    return this.rows[rowIndex][columnIndex];
     }
-    public String getColName(int col){
-        return this.col[col];
+    public String getColumnName(int col){
+        return this.columns[col];
     }
     
 }

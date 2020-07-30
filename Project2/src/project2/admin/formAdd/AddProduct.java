@@ -319,7 +319,6 @@ public class AddProduct extends javax.swing.JFrame {
                 pst.execute();
                 pst.close();
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null,e);
             }
 
         }
