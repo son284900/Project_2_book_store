@@ -38,6 +38,9 @@ import project2.view.HomePage;
 public class AddProduct extends javax.swing.JFrame {
     String fileName = null;
     byte[] images = null;
+    public static PreparedStatement pst = null;
+    public static ResultSet rs =null;
+    public static Connection cnn = ConnectDb.getConnection();
     /**
      * Creates new form AddProduct
      */
@@ -295,17 +298,27 @@ public class AddProduct extends javax.swing.JFrame {
         }else{
             String idVal = txtId.getText().trim();
             try {
-                String nameVal = txtName.getText();
+                String nameVal = txtName.getText().trim();
                 String categoryVal= boxCategory.getSelectedItem().toString();
                 String describesVal = txtDecribe.getText();
                 String priceVal = txtPrice.getText();
                 String quantity = txtQuantity.getText();
                 String sql = "UPDATE Product SET name_product='"+nameVal+"',category_name='"+categoryVal+"',describes='"+describesVal+"',price='"+priceVal+"',quantity='"+quantity+"' WHERE id_product='"+idVal+"'";
-                pst = cnn.prepareStatement(sql);
-                pst.execute();
-                JOptionPane.showMessageDialog(null,"Edit "+idVal+"  "+ nameVal,"Susses",1);
+                String sqlDuplicateName = "Select name_product from Product where name_product='"+nameVal+"'";
+                rs = cnn.prepareStatement(sqlDuplicateName).executeQuery();
+                if(rs.next()){
+                     txtError.setText("User name duplicate");
+                     txtError.setForeground(Color.red);
+                }else{
+                    pst = cnn.prepareStatement(sql);
+                    pst.execute();
+                    txtError.setText("Update susses !!! ");
+                    txtError.setForeground(Color.green);
+                }
+                
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error dont update information");
+                txtError.setText("Update false !!! ");
+                txtError.setForeground(Color.red);
             }
             try {
                 File file = new File(ImagePath);
@@ -313,11 +326,19 @@ public class AddProduct extends javax.swing.JFrame {
                 byte[] images = new byte[(int)file.length()];
                 fis.read(images);
                 String sql = "UPDATE Product SET images = ? where id_product = ?";
-                pst = cnn.prepareStatement(sql);
-                pst.setBytes(1, images);
-                pst.setString(2, idVal);
-                pst.execute();
-                pst.close();
+                String sqlDuplicateImage = "Select images from Product where images='"+fis.read(images)+"'";
+                rs = cnn.prepareStatement(sqlDuplicateImage).executeQuery();
+                if(rs.next()){
+                    txtError.setText("Iamges duplicate");
+                    txtError.setForeground(Color.red);
+                }else{
+                    pst = cnn.prepareStatement(sql);
+                    pst.setBytes(1, images);
+                    pst.setString(2, idVal);
+                    pst.execute();
+                    pst.close();
+                }
+               
             } catch (Exception e) {
             }
 
@@ -387,9 +408,6 @@ public class AddProduct extends javax.swing.JFrame {
     private void txtDecribeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDecribeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDecribeActionPerformed
-    public static PreparedStatement pst = null;
-    public static ResultSet rs =null;
-    public static Connection cnn = ConnectDb.getConnection();   
     public void Referesh(){
         txtName.setText("");
         txtDecribe.setText("");

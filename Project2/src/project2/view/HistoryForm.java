@@ -101,6 +101,7 @@ public class HistoryForm extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         txtUser = new javax.swing.JLabel();
         txtSearchHistory = new javax.swing.JTextField();
+        lblImage = new javax.swing.JLabel();
         txtSearch = new javax.swing.JTextField();
         jPanel9 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -292,6 +293,11 @@ public class HistoryForm extends javax.swing.JFrame {
 
         txtSearchHistory.setForeground(new java.awt.Color(204, 204, 204));
         txtSearchHistory.setText("Search History");
+        txtSearchHistory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchHistoryActionPerformed(evt);
+            }
+        });
         txtSearchHistory.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtSearchHistoryKeyPressed(evt);
@@ -303,7 +309,9 @@ public class HistoryForm extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(123, 123, 123)
+                .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(txtSearchHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(190, 190, 190)
                 .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -319,18 +327,19 @@ public class HistoryForm extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtUser, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
-                            .addComponent(txtSearchHistory))))
+                .addGap(20, 20, 20)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
+                    .addComponent(txtSearchHistory)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(lblImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
 
         txtSearch.setForeground(new java.awt.Color(204, 204, 204));
@@ -498,11 +507,11 @@ public class HistoryForm extends javax.swing.JFrame {
             rows[i][2] = list.get(i).getCategory();
             rows[i][6] = list.get(i).getQuantity();
             if((list.get(i).getMyImage())!= null){
-                byte[] x = list.get(i).getMyImage();
-                Image y = new ImageIcon(x).getImage();
-                Image z = y.getScaledInstance(150,120, Image.SCALE_SMOOTH);
-                ImageIcon img = new ImageIcon(x);                                
-                rows[i][3] = img;
+                byte[] imageData = list.get(i).getMyImage();
+                Image image = new ImageIcon(imageData).getImage();
+                image = image.getScaledInstance(lblImage.getWidth(), lblImage.getHeight(), Image.SCALE_SMOOTH);
+                ImageIcon imageIcon = new ImageIcon(image);                                
+                rows[i][3] = imageIcon;
             }else{
                 rows[i][3]=null;
             }
@@ -547,11 +556,11 @@ public class HistoryForm extends javax.swing.JFrame {
             rows[i][2] = list.get(i).getCategory();
             rows[i][6] = list.get(i).getQuantity();
             if((list.get(i).getMyImage())!= null){
-                byte[] x = list.get(i).getMyImage();
-                Image y = new ImageIcon(x).getImage();
-                Image z = y.getScaledInstance(150,120, Image.SCALE_SMOOTH);
-                ImageIcon img = new ImageIcon(x);                                
-                rows[i][3] = img;
+                 byte[] imageData = list.get(i).getMyImage();
+                Image image = new ImageIcon(imageData).getImage();
+                image = image.getScaledInstance(lblImage.getWidth(), lblImage.getHeight(), Image.SCALE_SMOOTH);
+                ImageIcon imageIcon = new ImageIcon(image);                                
+                rows[i][3] = imageIcon;
             }else{
                 rows[i][3]=null;
             }
@@ -608,11 +617,11 @@ public class HistoryForm extends javax.swing.JFrame {
             rows[i][2] = list.get(i).getCategory();
             rows[i][6] = list.get(i).getQuantity();
             if((list.get(i).getMyImage())!= null){
-                byte[] x = list.get(i).getMyImage();
-                Image y = new ImageIcon(x).getImage();
-                Image z = y.getScaledInstance(150,120, Image.SCALE_SMOOTH);
-                ImageIcon img = new ImageIcon(x);                                
-                rows[i][3] = img;
+                 byte[] imageData = list.get(i).getMyImage();
+                Image image = new ImageIcon(imageData).getImage();
+                image = image.getScaledInstance(lblImage.getWidth(), lblImage.getHeight(), Image.SCALE_SMOOTH);
+                ImageIcon imageIcon = new ImageIcon(image);                                
+                rows[i][3] = imageIcon;
             }else{
                 rows[i][3]=null;
             }
@@ -742,6 +751,10 @@ public class HistoryForm extends javax.swing.JFrame {
         category.setVisible(true);
     }//GEN-LAST:event_txtSup1MouseClicked
 
+    private void txtSearchHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchHistoryActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchHistoryActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -792,6 +805,7 @@ public class HistoryForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbUser;
+    private javax.swing.JLabel lblImage;
     private javax.swing.JTable tbHome;
     private javax.swing.JLabel txtBook;
     private javax.swing.JLabel txtHistory;

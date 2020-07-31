@@ -97,6 +97,8 @@ public class HomePage extends javax.swing.JFrame {
         btndelete = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         txtUser = new javax.swing.JLabel();
+        lblImage = new javax.swing.JLabel();
+        lblImage1 = new javax.swing.JLabel();
         txtSearch = new javax.swing.JTextField();
         jPanel9 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -324,6 +326,8 @@ public class HomePage extends javax.swing.JFrame {
                         .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btndelete, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(210, 210, 210)
+                        .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -334,6 +338,11 @@ public class HomePage extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(lblImage1)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -343,18 +352,28 @@ public class HomePage extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btndelete, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addGap(0, 12, Short.MAX_VALUE)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btndelete, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(lblImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGap(0, 234, Short.MAX_VALUE)
+                    .addComponent(lblImage1)
+                    .addGap(0, 235, Short.MAX_VALUE)))
         );
 
         txtSearch.setForeground(new java.awt.Color(204, 204, 204));
@@ -437,8 +456,7 @@ public class HomePage extends javax.swing.JFrame {
                     .addComponent(txtSearch)
                     .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -519,11 +537,11 @@ public class HomePage extends javax.swing.JFrame {
             rows[i][2] = list.get(i).getCategory();
             rows[i][6] = list.get(i).getQuantity();
             if((list.get(i).getMyImage())!= null){
-                byte[] x = list.get(i).getMyImage();
-                Image y = new ImageIcon(x).getImage();
-                Image z = y.getScaledInstance(150,120, Image.SCALE_SMOOTH);
-                ImageIcon img = new ImageIcon(x);                                
-                rows[i][3] = img;
+                 byte[] imageData = list.get(i).getMyImage();
+                Image image = new ImageIcon(imageData).getImage();
+                image = image.getScaledInstance(lblImage.getWidth(), lblImage.getHeight(), Image.SCALE_SMOOTH);
+                ImageIcon imageIcon = new ImageIcon(image);                                
+                rows[i][3] = imageIcon;
             }else{
                 rows[i][3]=null;
             }
@@ -554,11 +572,11 @@ public class HomePage extends javax.swing.JFrame {
             rows[i][2] = list.get(i).getCategory();
             rows[i][6] = list.get(i).getQuantity();
             if((list.get(i).getMyImage())!= null){
-                byte[] x = list.get(i).getMyImage();
-                Image y = new ImageIcon(x).getImage();
-                Image z = y.getScaledInstance(150,120, Image.SCALE_SMOOTH);
-                ImageIcon img = new ImageIcon(x);                                
-                rows[i][3] = img;
+                 byte[] imageData = list.get(i).getMyImage();
+                Image image = new ImageIcon(imageData).getImage();
+                image = image.getScaledInstance(lblImage.getWidth(), lblImage.getHeight(), Image.SCALE_SMOOTH);
+                ImageIcon imageIcon = new ImageIcon(image);                                
+                rows[i][3] = imageIcon;
             }else{
                 rows[i][3]=null;
             }
@@ -764,11 +782,11 @@ public class HomePage extends javax.swing.JFrame {
             rows[i][2] = list.get(i).getCategory();
             rows[i][6] = list.get(i).getQuantity();
             if((list.get(i).getMyImage())!= null){
-                byte[] x = list.get(i).getMyImage();
-                Image y = new ImageIcon(x).getImage();
-                Image z = y.getScaledInstance(150, 120, Image.SCALE_SMOOTH);
-                ImageIcon img = new ImageIcon(x);                                
-                rows[i][3] = img;
+                byte[] imageData = list.get(i).getMyImage();
+                Image image = new ImageIcon(imageData).getImage();
+                image = image.getScaledInstance(lblImage.getWidth(), lblImage.getHeight(), Image.SCALE_SMOOTH);
+                ImageIcon imageIcon = new ImageIcon(image);                                
+                rows[i][3] = imageIcon;
             }else{
                 rows[i][3]=null;
             }
@@ -778,7 +796,7 @@ public class HomePage extends javax.swing.JFrame {
         TheModel model = new TheModel(rows, colum);
         tbHome.setModel(model);
         tbHome.setRowHeight(120);
-        tbHome.getColumnModel().getColumn(3).setPreferredWidth(150);
+        tbHome.getColumnModel().getColumn(3).setPreferredWidth(120);
         tbHome.getColumnModel().getColumn(0).setHeaderValue("Id");
         tbHome.getColumnModel().getColumn(1).setHeaderValue("Name");
         tbHome.getColumnModel().getColumn(2).setHeaderValue("Category");
@@ -855,6 +873,8 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblImage;
+    private javax.swing.JLabel lblImage1;
     private javax.swing.JTable tbHome;
     private javax.swing.JLabel txtBook;
     private javax.swing.JLabel txtHistory;

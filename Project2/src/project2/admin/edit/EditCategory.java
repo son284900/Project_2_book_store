@@ -4,17 +4,24 @@
  * and open the template in the editor.
  */
 package project2.admin.edit;
+import java.awt.Color;
 import java.sql.*;
 import javax.swing.*;
 import javax.swing.table.TableModel;
 import project2.admin.DOB.Category;
+import project2.admin.DOB.ConnectDb;
 import project2.view.Category_F;
+import static project2.view.RegisterForm.cnn;
+import static project2.view.RegisterForm.pst;
+import static project2.view.RegisterForm.rs;
 /**
  *
  * @author son
  */
 public class EditCategory extends javax.swing.JFrame {
-
+    public static PreparedStatement pst = null;
+    public static ResultSet rs =null;
+    public static Connection cnn = ConnectDb.getConnection();
     /**
      * Creates new form EditCategory
      */
@@ -42,6 +49,7 @@ public class EditCategory extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
         btnAdd = new javax.swing.JButton();
+        txtError = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -108,26 +116,29 @@ public class EditCategory extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(btnback, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(66, 66, 66)
-                        .addComponent(btn_reset, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6))
+                        .addGap(227, 227, 227)
+                        .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(227, 227, 227)
-                                .addComponent(jLabel1))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(23, 23, 23)
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 6, Short.MAX_VALUE))
+                                .addComponent(jLabel2))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnback, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(64, 64, 64)
+                                .addComponent(btn_reset, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtError, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 6, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -148,13 +159,16 @@ public class EditCategory extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addComponent(txtError, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnback, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_reset, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnback, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_reset, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -175,7 +189,7 @@ public class EditCategory extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNameMouseClicked
-
+        
     }//GEN-LAST:event_txtNameMouseClicked
     public static String id_edit;
     public void Referesh(){
@@ -183,9 +197,26 @@ public class EditCategory extends javax.swing.JFrame {
     }
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         if(txtName.getText().trim().length()==0){
-            JOptionPane.showMessageDialog(null,"Tên thể lọai không được bỏ trống" +txtName,"Thông báo",1);
+            txtError.setText("Enter dont empty ");
+            this.Referesh();
         }else{
-            Category.UpdateCategory(this.txtId.getText().trim(),this.txtName.getText().trim());
+            String name = txtName.getText().trim();
+            String sql = "Select Name from Category where Name ='"+name+"'";
+            try {
+                pst =cnn.prepareStatement(sql);
+                rs = pst.executeQuery();
+                if(rs.next()){
+                    txtError.setText("User name duplicate");
+                    txtError.setForeground(Color.red);
+                    this.Referesh();
+                }else{
+                     txtError.setText("Insert susses !!!");
+                     txtError.setForeground(Color.green);
+                     Category.UpdateCategory(this.txtId.getText().trim(),this.txtName.getText().trim());
+                }
+            } catch (Exception e) {
+            }
+            
         }
     }//GEN-LAST:event_btnEditActionPerformed
 
@@ -204,11 +235,29 @@ public class EditCategory extends javax.swing.JFrame {
     }//GEN-LAST:event_txtIdMouseClicked
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-       if(txtName.getText().trim().length()==0){
-           JOptionPane.showMessageDialog(null,"Tên thể lọai không được bỏ trống" +txtName,"Thông báo",1);
-       }else{
-           Category.InsertCategory(this.txtName.getText().trim());
-       }
+         if(txtName.getText().trim().length()==0){
+            txtError.setText("Enter dont empty ");
+            this.Referesh();
+        }else{
+            String name = txtName.getText().trim();
+            String sql = "Select Name from Category where Name ='"+name+"'";
+            try {
+                pst =cnn.prepareStatement(sql);
+                rs = pst.executeQuery();
+                if(rs.next()){
+                    txtError.setText("User name duplicate");
+                    txtError.setForeground(Color.red);
+                    this.Referesh();
+                }else{
+                     txtError.setText("Insert susses !!!");
+                     txtError.setForeground(Color.green);
+                     Category.InsertCategory(this.txtName.getText().trim());
+                }
+            } catch (Exception e) {
+            }
+            
+        }
+       
     }//GEN-LAST:event_btnAddActionPerformed
 
     /**
@@ -255,6 +304,7 @@ public class EditCategory extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel txtError;
     public javax.swing.JTextField txtId;
     public javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables

@@ -96,6 +96,7 @@ public class Category_F extends javax.swing.JFrame {
         btndelete = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         txtUser = new javax.swing.JLabel();
+        lblImage = new javax.swing.JLabel();
         txtSearch = new javax.swing.JTextField();
         jPanel9 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -300,6 +301,8 @@ public class Category_F extends javax.swing.JFrame {
                 .addComponent(btnAddCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btndelete, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(235, 235, 235)
+                .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -326,7 +329,8 @@ public class Category_F extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(btnAddCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(btndelete, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -413,8 +417,7 @@ public class Category_F extends javax.swing.JFrame {
                     .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
                     .addComponent(lbUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -501,11 +504,11 @@ public class Category_F extends javax.swing.JFrame {
             rows[i][2] = list.get(i).getCategory();
             rows[i][6] = list.get(i).getQuantity();
             if((list.get(i).getMyImage())!= null){
-                byte[] x = list.get(i).getMyImage();
-                Image y = new ImageIcon(x).getImage();
-                Image z = y.getScaledInstance(150,120, Image.SCALE_SMOOTH);
-                ImageIcon img = new ImageIcon(x);                                
-                rows[i][3] = img;
+                byte[] imageData = list.get(i).getMyImage();
+                Image image = new ImageIcon(imageData).getImage();
+                image = image.getScaledInstance(lblImage.getWidth(), lblImage.getHeight(), Image.SCALE_SMOOTH);
+                ImageIcon imageIcon = new ImageIcon(image);                                
+                rows[i][3] = imageIcon;
             }else{
                 rows[i][3]=null;
             }
@@ -536,11 +539,11 @@ public class Category_F extends javax.swing.JFrame {
             rows[i][2] = list.get(i).getCategory();
             rows[i][6] = list.get(i).getQuantity();
             if((list.get(i).getMyImage())!= null){
-                byte[] x = list.get(i).getMyImage();
-                Image y = new ImageIcon(x).getImage();
-                Image z = y.getScaledInstance(150,120, Image.SCALE_SMOOTH);
-                ImageIcon img = new ImageIcon(x);                                
-                rows[i][3] = img;
+                byte[] imageData = list.get(i).getMyImage();
+                Image image = new ImageIcon(imageData).getImage();
+                image = image.getScaledInstance(lblImage.getWidth(), lblImage.getHeight(), Image.SCALE_SMOOTH);
+                ImageIcon imageIcon = new ImageIcon(image);                                
+                rows[i][3] = imageIcon;
             }else{
                 rows[i][3]=null;
             }
@@ -583,11 +586,11 @@ public class Category_F extends javax.swing.JFrame {
             rows[i][2] = list.get(i).getCategory();
             rows[i][6] = list.get(i).getQuantity();
             if((list.get(i).getMyImage())!= null){
-                byte[] x = list.get(i).getMyImage();
-                Image y = new ImageIcon(x).getImage();
-                Image z = y.getScaledInstance(150,120, Image.SCALE_SMOOTH);
-                ImageIcon img = new ImageIcon(x);                                
-                rows[i][3] = img;
+                 byte[] imageData = list.get(i).getMyImage();
+                Image image = new ImageIcon(imageData).getImage();
+                image = image.getScaledInstance(lblImage.getWidth(), lblImage.getHeight(), Image.SCALE_SMOOTH);
+                ImageIcon imageIcon = new ImageIcon(image);                                
+                rows[i][3] = imageIcon;
             }else{
                 rows[i][3]=null;
             }
@@ -803,6 +806,7 @@ public class Category_F extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbUser;
+    private javax.swing.JLabel lblImage;
     private javax.swing.JTable tbHome;
     private javax.swing.JLabel txtBook;
     private javax.swing.JLabel txtHistory;

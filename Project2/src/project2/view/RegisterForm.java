@@ -5,17 +5,28 @@
  */
 package project2.view;
 
+import java.awt.Color;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+import project2.admin.DOB.ConnectDb;
 import project2.admin.DOB.Register;
+
 
 /**
  *
  * @author son
  */
 public class RegisterForm extends javax.swing.JFrame {
-
+    public static PreparedStatement pst = null;
+    public static ResultSet rs =null;
+    public static Connection cnn = ConnectDb.getConnection();
     /**
      * Creates new form RegisterForm
      */
@@ -44,6 +55,7 @@ public class RegisterForm extends javax.swing.JFrame {
         btnBack = new javax.swing.JButton();
         txtPass = new javax.swing.JPasswordField();
         txtAgainPass = new javax.swing.JPasswordField();
+        txtError = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -85,7 +97,7 @@ public class RegisterForm extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnRegister);
-        btnRegister.setBounds(440, 280, 103, 48);
+        btnRegister.setBounds(440, 310, 103, 48);
 
         btnReset.setBackground(new java.awt.Color(229, 158, 16));
         btnReset.setText("Reset");
@@ -95,7 +107,7 @@ public class RegisterForm extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnReset);
-        btnReset.setBounds(240, 280, 99, 48);
+        btnReset.setBounds(240, 310, 99, 48);
 
         btnBack.setBackground(new java.awt.Color(21, 155, 229));
         btnBack.setText("Back");
@@ -105,11 +117,13 @@ public class RegisterForm extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnBack);
-        btnBack.setBounds(28, 284, 98, 46);
+        btnBack.setBounds(40, 310, 98, 46);
         jPanel1.add(txtPass);
         txtPass.setBounds(150, 115, 300, 46);
         jPanel1.add(txtAgainPass);
         txtAgainPass.setBounds(150, 179, 300, 48);
+        jPanel1.add(txtError);
+        txtError.setBounds(170, 260, 260, 40);
 
         jLabel5.setIcon(new javax.swing.ImageIcon("/home/son/Desktop/Project_2_book_store/Project2/src/project2/image/melchsee-5430792_640.jpg")); // NOI18N
         jLabel5.setText("jLabel5");
@@ -133,7 +147,7 @@ public class RegisterForm extends javax.swing.JFrame {
     private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUserNameActionPerformed
-
+  
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
          String user = txtUserName.getText().trim();
          char[] pass = txtPass.getPassword();
@@ -141,25 +155,55 @@ public class RegisterForm extends javax.swing.JFrame {
          String password = String.copyValueOf(pass);
          String passwordAgain = String.copyValueOf(passAgain);
         if((user.length() == 0) || (password.length() == 0) || (passwordAgain.length() == 0)){
-            JOptionPane.showMessageDialog(null, "Error");
+            txtError.setText("Enter dont empty ");
+            this.Reset();
         }else{
-            String regex="^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$";
-            Pattern pattern = Pattern.compile(regex);
-            Matcher m = pattern.matcher(password);
-            boolean b = m.matches();
-            if(password.equals(passwordAgain) == false || b != true){
-                JOptionPane.showMessageDialog(null, "Error PassWord");
-            }else{
-                Register.Insert(user, password);
-            }
+             
+                 String regex="^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$";
+                 String sql = "Select username from Admin where username ='"+user+"'";
+                 Pattern pattern = Pattern.compile(regex);
+                 Matcher m = pattern.matcher(password);
+                 boolean b = m.matches();
+                 try {
+                        pst =cnn.prepareStatement(sql);
+                        rs = pst.executeQuery();
+                        if(rs.next())
+                        {
+                            txtError.setText("User name duplicate");
+                            txtError.setForeground(Color.red);
+                            this.Reset();
+                        }else
+                        {
+                              if(password.equals(passwordAgain) == false || b != true)
+                              {
+                                  txtError.setText("The password must be in the correct format");
+                                  txtError.setForeground(Color.red);
+                                  this.Reset();
+                              }
+                              else
+                              {
+                                  txtError.setText("Insert susses !!!");
+                                  txtError.setForeground(Color.green);
+                                  Register.Insert(user, password);
+                              }
+
+                        }
+                } catch (Exception e) {
+                    txtError.setText("Error");
+                    this.Reset();
+                }
+             
+                
             
         }
     }//GEN-LAST:event_btnRegisterActionPerformed
-
-    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
+    public void Reset(){
         this.txtUserName.setText("");
         this.txtPass.setText("");
         this.txtAgainPass.setText("");
+    }
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
+        this.Reset();
     }//GEN-LAST:event_btnResetActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -214,6 +258,7 @@ public class RegisterForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField txtAgainPass;
+    private javax.swing.JLabel txtError;
     private javax.swing.JPasswordField txtPass;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
