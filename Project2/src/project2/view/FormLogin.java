@@ -6,19 +6,13 @@
 package project2.view;
 
 import java.awt.Color;
-import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 /**
  *
@@ -27,6 +21,8 @@ import javax.swing.JTextField;
 public class FormLogin extends javax.swing.JFrame {
 
     private String val;
+    int xMouse;
+    int yMouse;
 
     /**
      * Creates new form FormLogin
@@ -66,6 +62,11 @@ public class FormLogin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                formMouseDragged(evt);
+            }
+        });
 
         Login.setBackground(new java.awt.Color(252, 245, 245));
         Login.setBorder(null);
@@ -170,6 +171,14 @@ public class FormLogin extends javax.swing.JFrame {
 
         lbImage.setIcon(new javax.swing.ImageIcon("/home/son/Desktop/Project_2_book_store/Project2/src/project2/image/benjamin-thomas-qDEvPXs9PwY-unsplash.jpg")); // NOI18N
         lbImage.setText("jLabel3");
+        lbImage.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                lbImageMouseDragged(evt);
+            }
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lbImageMouseMoved(evt);
+            }
+        });
         Login.add(lbImage);
         lbImage.setBounds(0, 0, 640, 400);
 
@@ -296,6 +305,22 @@ public class FormLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
 //        resetColor(btnReset);
     }//GEN-LAST:event_btn_cancel1MouseExited
+
+    private void lbImageMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbImageMouseDragged
+        // TODO add your handling code here:
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x=xMouse, y=yMouse);
+    }//GEN-LAST:event_lbImageMouseDragged
+
+    private void lbImageMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbImageMouseMoved
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_lbImageMouseMoved
+
+    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formMouseDragged
      
     private boolean validate_login(String username, String password) {
        try{           

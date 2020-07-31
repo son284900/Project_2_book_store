@@ -6,9 +6,7 @@
 package project2.view;
 
 import java.awt.Color;
-import java.awt.event.KeyEvent;
 import java.awt.Image;
-import java.awt.desktop.PreferencesEvent;
 import java.awt.event.KeyEvent;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -21,31 +19,17 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.*;
-import javax.swing.table.TableModel;
-import project2.admin.DOB.Category;
 import project2.admin.DOB.ConnectDb;
 import project2.admin.DOB.History;
 import project2.admin.DOB.Product;
-import static project2.admin.DOB.Product.cnn;
-import static project2.admin.DOB.Product.pst;
-import static project2.admin.DOB.Product.rs;
 import project2.admin.DOB.TheModel;
 import project2.admin.DOB.UpdateTable;
-import project2.admin.edit.EditCategory;
-import project2.admin.formAdd.AddProduct;
-import project2.admin.infofmation_admin.HistoryInformation;
 import project2.admin.infofmation_admin.ProductInformation;
-import static project2.view.Category_F.cnn;
-import static project2.view.Category_F.pst;
-import static project2.view.Category_F.rs;
-import static project2.view.HomePage.cnn;
-import static project2.view.HomePage.pst;
-import static project2.view.HomePage.rs;
+
 /**
  *
  * @author son

@@ -6,9 +6,7 @@
 package project2.view;
 
 import java.awt.Color;
-import java.awt.event.KeyEvent;
 import java.awt.Image;
-import java.awt.desktop.PreferencesEvent;
 import java.awt.event.KeyEvent;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -31,17 +29,11 @@ import project2.admin.DOB.Category;
 import project2.admin.DOB.ConnectDb;
 import project2.admin.DOB.History;
 import project2.admin.DOB.Product;
-import static project2.admin.DOB.Product.cnn;
-import static project2.admin.DOB.Product.pst;
-import static project2.admin.DOB.Product.rs;
 import project2.admin.DOB.TheModel;
 import project2.admin.DOB.UpdateTable;
 import project2.admin.edit.EditCategory;
 import project2.admin.formAdd.AddProduct;
 import project2.admin.infofmation_admin.ProductInformation;
-import static project2.view.HomePage.cnn;
-import static project2.view.HomePage.pst;
-import static project2.view.HomePage.rs;
 /**
  *
  * @author son
@@ -664,7 +656,7 @@ public class Category_F extends javax.swing.JFrame {
         txtSearch.setForeground(Color.BLACK);
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
             try {
-                String nameSearch = txtSearch.getText();
+                String nameSearch = txtSearch.getText().trim();
                 String sqlSearchName = "Select * from Product where name_product='"+nameSearch.trim()+"'";
                 pst =cnn.prepareStatement(sqlSearchName);
                 rs = pst.executeQuery();

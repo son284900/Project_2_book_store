@@ -6,8 +6,6 @@
 package project2.admin.formAdd;
 
 import java.awt.Color;
-import java.awt.Image;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -19,11 +17,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import project2.admin.DOB.Category;
 import project2.admin.DOB.ConnectDb;
-import project2.admin.DOB.Product;
 import static project2.admin.DOB.Product.cnn;
 import static project2.admin.DOB.Product.pst;
 import java.awt.Image;

@@ -6,14 +6,9 @@
 package project2.admin.edit;
 import java.awt.Color;
 import java.sql.*;
-import javax.swing.*;
-import javax.swing.table.TableModel;
 import project2.admin.DOB.Category;
 import project2.admin.DOB.ConnectDb;
 import project2.view.Category_F;
-import static project2.view.RegisterForm.cnn;
-import static project2.view.RegisterForm.pst;
-import static project2.view.RegisterForm.rs;
 /**
  *
  * @author son

@@ -4,19 +4,12 @@
  * and open the template in the editor.
  */
 package project2.admin.DOB;
-import java.awt.Image;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.zip.InflaterInputStream;
 import javax.swing.*;
-import project2.DbUtils;
-import static project2.admin.DOB.ConnectDb.getConnection;
 import project2.admin.infofmation_admin.ProductInformation;
-import project2.view.HomePage;
-import static project2.view.HomePage.rs;
 /**
  *
  * @author son

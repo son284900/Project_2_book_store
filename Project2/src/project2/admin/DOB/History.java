@@ -10,8 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
-import static project2.admin.DOB.Category.cnn;
-import static project2.admin.DOB.Category.pst;
+
 
 /**
  *

@@ -6,10 +6,7 @@
 package project2.view;
 
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.event.KeyEvent;
 import java.awt.Image;
-import java.awt.desktop.PreferencesEvent;
 import java.awt.event.KeyEvent;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -27,24 +24,15 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.*;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 import project2.admin.DOB.ConnectDb;
 import project2.admin.DOB.History;
 import project2.admin.DOB.Product;
-import static project2.admin.DOB.Product.cnn;
-import static project2.admin.DOB.Product.pst;
-import static project2.admin.DOB.Product.rs;
 import project2.admin.DOB.TheModel;
 import project2.admin.DOB.UpdateTable;
 import project2.admin.formAdd.AddProduct;
 import project2.admin.formAdd.updateReppository;
 import project2.admin.infofmation_admin.ProductInformation;
-import static project2.view.Category_F.rs;
-import static project2.view.HistoryForm.cnn;
-import static project2.view.HistoryForm.pst;
-import static project2.view.HistoryForm.rs;
 /**
  *
  * @author son
@@ -839,7 +827,7 @@ public class repositoryF extends javax.swing.JFrame {
         txtSearchCategory.setForeground(Color.BLACK);
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
             try {
-                String nameSearch = txtSearchCategory.getText();
+                String nameSearch = txtSearchCategory.getText().trim();
                 String sqlSearchName = "Select id_product as Id , name_product as Name ,quantity as Quantity from Product where name_product='"+nameSearch.trim()+"'";
                 pst =cnn.prepareStatement(sqlSearchName);
                 rs = pst.executeQuery();

@@ -6,7 +6,6 @@
 package project2.admin.DOB;
 import java.sql.*;
 import javax.swing.*;
-import project2.DbUtils;
 /**
  *
  * @author son
