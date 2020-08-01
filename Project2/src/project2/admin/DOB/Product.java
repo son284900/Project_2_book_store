@@ -58,7 +58,7 @@ public class Product {
     public ArrayList<ProductInformation> getData(){
         ArrayList<ProductInformation> list = new ArrayList<ProductInformation>();
         try {
-            String sql = "select * from Product";
+            String sql = "select * from Product limit 3";
             pst = cnn.prepareStatement(sql);
             rs = pst.executeQuery();
             ProductInformation p;

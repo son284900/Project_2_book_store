@@ -359,23 +359,32 @@ public class AddProduct extends javax.swing.JFrame {
         if((txtName.getText().trim().length()==0)
             ||(Float.parseFloat(this.txtPrice.getText().trim()) == 0)
         ){
-            txtError.setText("không được bỏ trống");
+            txtError.setText("Enter dont empty");
         }else{
             try {
+                String nameVal = txtName.getText().trim();
                 String sql ="insert into Product (name_product,category_name,images,describes,price,quantity) VALUES (?,?,?,?,?,?)";
+                String sqlDuplicateName = "Select name_product from Product where name_product='"+nameVal+"'";
                 InputStream img = new FileInputStream(new File(ImagePath));
-                pst = cnn.prepareStatement(sql);
-                pst.setString(1,this.txtName.getText().trim());
-                pst.setString(2, this.boxCategory.getSelectedItem().toString());
-                pst.setBlob(3, img);
-                pst.setString(4,this.txtDecribe.getText().trim());
-                pst.setFloat(5, Float.parseFloat(this.txtPrice.getText().trim()));
-                pst.setInt(6,Integer.parseInt(txtQuantity.getText().trim()));
-                pst.execute();
-                txtError.setText(this.txtName.getText()+" Notify Instert Susses");
-                txtError.setForeground(new Color(26, 255, 26));
+                rs = cnn.prepareStatement(sqlDuplicateName).executeQuery();
+                if(rs.next()){
+                     txtError.setText("User name duplicate");
+                     txtError.setForeground(Color.red);
+                }else{
+                    pst = cnn.prepareStatement(sql);
+                    pst.setString(1,this.txtName.getText().trim());
+                    pst.setString(2, this.boxCategory.getSelectedItem().toString());
+                    pst.setBlob(3, img);
+                    pst.setString(4,this.txtDecribe.getText().trim());
+                    pst.setFloat(5, Float.parseFloat(this.txtPrice.getText().trim()));
+                    pst.setInt(6,Integer.parseInt(txtQuantity.getText().trim()));
+                    pst.execute();
+                    txtError.setText("Update susses !!! ");
+                    txtError.setForeground(Color.green);
+                }
+              
             } catch (Exception e) {
-                txtError.setText(this.txtName.getText()+"Error");
+                txtError.setText(this.txtName.getText()+" Error");
             }
         }
 

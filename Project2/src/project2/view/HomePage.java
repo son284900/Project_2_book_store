@@ -10,6 +10,7 @@ import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Connection;
@@ -31,6 +32,7 @@ import project2.admin.infofmation_admin.ProductInformation;
 import java.time.format.DateTimeFormatter;  
 import java.time.LocalDateTime;   
 import project2.admin.DOB.History;
+import project2.admin.DOB.UpdateTable;
 
 
 /**
@@ -42,6 +44,7 @@ public class HomePage extends javax.swing.JFrame {
      DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
      LocalDateTime now = LocalDateTime.now();
      String nowTime = dtf.format(now);
+     long count , CountPage , Page = 1,PageC=1,limit=3;
     /**
      * Creates new form HomePage
      */
@@ -51,6 +54,14 @@ public class HomePage extends javax.swing.JFrame {
         populateTable();
         this.txtUser.setText("User Name: "+FormLogin.userName);
         this.setLocationRelativeTo(null);
+        countDb();
+        if(count % limit == 0 ){
+            CountPage = count/limit;
+        }else{
+            CountPage = count/limit+1;
+        }
+        txtCountPage.setText("1/"+(CountPage));
+        txtPage.setText("1");
     }
 
     /**
@@ -84,6 +95,12 @@ public class HomePage extends javax.swing.JFrame {
         txtUser = new javax.swing.JLabel();
         lblImage = new javax.swing.JLabel();
         lblImage1 = new javax.swing.JLabel();
+        btMaxSmall = new javax.swing.JButton();
+        btSmall = new javax.swing.JButton();
+        btMaxPig = new javax.swing.JButton();
+        btPig = new javax.swing.JButton();
+        txtPage = new javax.swing.JLabel();
+        txtCountPage = new javax.swing.JLabel();
         txtSearch = new javax.swing.JTextField();
         jPanel9 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -300,6 +317,40 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
 
+        btMaxSmall.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        btMaxSmall.setForeground(new java.awt.Color(8, 245, 65));
+        btMaxSmall.setText("<<");
+        btMaxSmall.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btMaxSmallActionPerformed(evt);
+            }
+        });
+
+        btSmall.setForeground(new java.awt.Color(163, 241, 29));
+        btSmall.setText("<");
+        btSmall.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSmallActionPerformed(evt);
+            }
+        });
+
+        btMaxPig.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        btMaxPig.setForeground(new java.awt.Color(8, 245, 65));
+        btMaxPig.setText(">>");
+        btMaxPig.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btMaxPigActionPerformed(evt);
+            }
+        });
+
+        btPig.setForeground(new java.awt.Color(163, 241, 29));
+        btPig.setText(">");
+        btPig.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btPigActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -311,9 +362,21 @@ public class HomePage extends javax.swing.JFrame {
                         .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btndelete, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(210, 210, 210)
-                        .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(btMaxSmall, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btSmall, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(txtPage, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(btPig, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btMaxPig, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCountPage, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -342,15 +405,22 @@ public class HomePage extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addGap(0, 12, Short.MAX_VALUE)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btndelete, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())
+                                .addGap(0, 12, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btndelete, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btMaxSmall)
+                                        .addComponent(btSmall)
+                                        .addComponent(btMaxPig)
+                                        .addComponent(btPig)
+                                        .addComponent(txtPage, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtCountPage, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(48, 48, 48))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addComponent(lblImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -454,7 +524,7 @@ public class HomePage extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -484,6 +554,70 @@ public class HomePage extends javax.swing.JFrame {
         }
         return list;
     }
+    public void countDb(){
+        try {
+            String sql = "select count(*) from Product";
+            rs = cnn.prepareStatement(sql).executeQuery();
+            while(rs.next()){
+                count = rs.getLong(1);
+            }
+        } catch (Exception e) {
+        }
+    }
+    public void loadDate(long page,long limit){
+        ArrayList<ProductInformation> list = new ArrayList<ProductInformation>();
+        try {
+            String sql = "select * from Product limit "+page+","+limit;
+            rs = cnn.prepareStatement(sql).executeQuery();
+            while(rs.next()){
+                ProductInformation p = new ProductInformation(
+                        rs.getString("id_product"),
+                        rs.getString("name_product"),
+                        rs.getString("category_name"),
+                        rs.getBytes("images"),
+                        rs.getString("describes"),
+                        rs.getFloat("price"),
+                        rs.getInt("quantity")
+                        
+                );
+                list.add(p);
+                 String[] colum = {"id","Name","Category","Image","Decritble","Price","Quantity"};
+                Object[][] rows = new Object[list.size()][7];
+                for(int i = 0 ; i < list.size();i++){
+                    rows[i][0] = list.get(i).getId();
+                    rows[i][1] = list.get(i).getName();
+                    rows[i][5] = list.get(i).getPrice();
+                    rows[i][4] = list.get(i).getDecritble();
+                    rows[i][2] = list.get(i).getCategory();
+                    rows[i][6] = list.get(i).getQuantity();
+                    if((list.get(i).getMyImage())!= null){
+                         byte[] imageData = list.get(i).getMyImage();
+                        Image image = new ImageIcon(imageData).getImage();
+                        image = image.getScaledInstance(lblImage.getWidth(), lblImage.getHeight(), Image.SCALE_SMOOTH);
+                        ImageIcon imageIcon = new ImageIcon(image);                                
+                        rows[i][3] = imageIcon;
+                    }else{
+                        rows[i][3]=null;
+                    }
+                    }
+                    TheModel model = new TheModel(rows, colum);
+                    tbHome.setModel(model);
+                    tbHome.setRowHeight(120);
+                    tbHome.getColumnModel().getColumn(3).setPreferredWidth(120);
+                    tbHome.getColumnModel().getColumn(0).setHeaderValue("Id");
+                    tbHome.getColumnModel().getColumn(1).setHeaderValue("Name");
+                    tbHome.getColumnModel().getColumn(2).setHeaderValue("Category");
+                    tbHome.getColumnModel().getColumn(3).setHeaderValue("Image");
+                    tbHome.getColumnModel().getColumn(4).setHeaderValue("Decritble");
+                    tbHome.getColumnModel().getColumn(5).setHeaderValue("Price");
+                    tbHome.getColumnModel().getColumn(6).setHeaderValue("Quantity");
+            }
+        } catch (Exception e) {
+        }
+   
+ 
+    }
+    
     public ArrayList<ProductInformation> getDataSearchBox(){
         ArrayList<ProductInformation> list = new ArrayList<ProductInformation>();
         String nameSearch = boxCategory.getSelectedItem().toString();
@@ -503,12 +637,14 @@ public class HomePage extends javax.swing.JFrame {
                         
                 );
                 list.add(p);
+                
             }
         } catch (SQLException ex) {
             Logger.getLogger(Product.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
     }
+
     public void populateTableSearchBox(){
         Product pro = new Product();
         ArrayList<ProductInformation> list = this.getDataSearchBox();
@@ -533,8 +669,7 @@ public class HomePage extends javax.swing.JFrame {
         }
         TheModel model = new TheModel(rows, colum);
         tbHome.setModel(model);
-        tbHome.setRowHeight(100);
-        tbHome.getColumnModel().getColumn(3).setPreferredWidth(120);
+        tbHome.setRowHeight(120);
         tbHome.getColumnModel().getColumn(3).setPreferredWidth(120);
         tbHome.getColumnModel().getColumn(0).setHeaderValue("Id");
         tbHome.getColumnModel().getColumn(1).setHeaderValue("Name");
@@ -568,8 +703,7 @@ public class HomePage extends javax.swing.JFrame {
         }
         TheModel model = new TheModel(rows, colum);
         tbHome.setModel(model);
-        tbHome.setRowHeight(100);
-        tbHome.getColumnModel().getColumn(3).setPreferredWidth(120);
+        tbHome.setRowHeight(120);
         tbHome.getColumnModel().getColumn(3).setPreferredWidth(120);
         tbHome.getColumnModel().getColumn(0).setHeaderValue("Id");
         tbHome.getColumnModel().getColumn(1).setHeaderValue("Name");
@@ -741,6 +875,42 @@ public class HomePage extends javax.swing.JFrame {
         HistoryForm his = new HistoryForm();
         his.setVisible(true);
     }//GEN-LAST:event_txtHistoryMouseClicked
+
+    private void btSmallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSmallActionPerformed
+        // TODO add your handling code here:
+        if(Page > 1){
+              Page --;
+            loadDate(((Page-1)*limit),limit);
+            txtPage.setText(""+Page);
+            txtCountPage.setText(Page + "/"+(CountPage));
+        }
+    }//GEN-LAST:event_btSmallActionPerformed
+
+    private void btPigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPigActionPerformed
+        // TODO add your handling code here:
+        if(Page < CountPage){
+              Page ++;
+            loadDate(((Page-1)*limit),limit);
+            txtPage.setText(""+(Page));
+            txtCountPage.setText((Page) + "/"+(CountPage));
+        }
+    }//GEN-LAST:event_btPigActionPerformed
+
+    private void btMaxSmallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMaxSmallActionPerformed
+        // TODO add your handling code here:
+        Page =0;
+        loadDate(Page,limit);
+        txtCountPage.setText("1/"+(CountPage));
+        txtPage.setText("1");
+    }//GEN-LAST:event_btMaxSmallActionPerformed
+
+    private void btMaxPigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMaxPigActionPerformed
+        // TODO add your handling code here:
+        Page = (CountPage-1)*limit;
+        loadDate(Page,limit);
+        txtPage.setText(""+(CountPage));
+        txtCountPage.setText((CountPage)+"/"+(CountPage));
+    }//GEN-LAST:event_btMaxPigActionPerformed
    
      public void tableData(){
         String sql = "Select * from Product";
@@ -844,6 +1014,10 @@ public class HomePage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JComboBox<String> boxCategory;
+    private javax.swing.JButton btMaxPig;
+    private javax.swing.JButton btMaxSmall;
+    private javax.swing.JButton btPig;
+    private javax.swing.JButton btSmall;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btndelete;
     private javax.swing.JButton jButton1;
@@ -862,7 +1036,9 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JLabel lblImage1;
     private javax.swing.JTable tbHome;
     private javax.swing.JLabel txtBook;
+    private javax.swing.JLabel txtCountPage;
     private javax.swing.JLabel txtHistory;
+    private javax.swing.JLabel txtPage;
     private javax.swing.JTextField txtSearch;
     private javax.swing.JLabel txtSup1;
     private javax.swing.JLabel txtSup2;

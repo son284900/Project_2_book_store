@@ -2,47 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4122df85-c22a-40a2-a11f-7bbb6d7a8a39" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/build/classes/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/.netbeans_automatic_build" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/.netbeans_update_resources" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/DbUtils$DriverProxy.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/DbUtils$DriverProxy.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/DbUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/DbUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/Project2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/Project2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/DOB/Category.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/DOB/Category.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/DOB/ConnectDb.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/DOB/ConnectDb.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Export/fileExportProduct.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Export/fileExportProduct.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/DOB/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/DOB/Product.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/DOB/TheModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/DOB/TheModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/DOB/UpdateTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/DOB/UpdateTable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/DOB/userAdminDOB.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/DOB/userAdminDOB.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/adminform$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/adminform$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/adminform$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/adminform$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/adminform.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/adminform.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/adminform.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/edit/EditCategory$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/edit/EditCategory$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/edit/EditCategory$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/edit/EditCategory$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/edit/EditCategory$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/edit/EditCategory$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/edit/EditCategory$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/edit/EditCategory$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/edit/EditCategory$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/edit/EditCategory$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/edit/EditCategory$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/edit/EditCategory$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/edit/EditCategory.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/edit/EditCategory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/edit/EditCategory.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct$8.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct$9.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/infofmation_admin/ProductInformation.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/infofmation_admin/ProductInformation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/infofmation_admin/UserAdmin.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/infofmation_admin/UserAdmin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/view/HomePage$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/view/HomePage$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/view/HomePage$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/view/HomePage$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/view/HomePage$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/view/HomePage$11.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/view/HomePage$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/view/HomePage$12.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/view/HomePage$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/view/HomePage$13.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/view/HomePage$14.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/view/HomePage$14.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/view/HomePage$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/view/HomePage$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/view/HomePage$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/view/HomePage$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/view/HomePage$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/view/HomePage$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/view/HomePage$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/view/HomePage$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/view/HomePage$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/view/HomePage$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/view/HomePage$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/view/HomePage$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/view/HomePage$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/view/HomePage$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/view/HomePage$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/view/HomePage$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/view/HomePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/view/HomePage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/project2/view/HomePage.form" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/view/HomePage.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/project2/admin/formAdd/AddProduct.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/project2/admin/formAdd/AddProduct.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/project2/admin/DOB/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project2/admin/DOB/Product.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/project2/admin/formAdd/AddProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project2/admin/formAdd/AddProduct.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/project2/image/desola-lanre-ologun-zYgV-NGZtlA-unsplash (1).jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/project2/view/HomePage.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/project2/view/HomePage.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/project2/view/HomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project2/view/HomePage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../mysql/Mydb-2020_07_18_22_20_45-dump.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/Mydb-2020_07_18_22_20_45-dump.sql" afterDir="false" />
@@ -103,6 +85,7 @@
       <updated>1595564986259</updated>
       <workItem from="1595564989694" duration="4000" />
       <workItem from="1595648220836" duration="220000" />
+      <workItem from="1596281844165" duration="4000" />
     </task>
     <servers />
   </component>
