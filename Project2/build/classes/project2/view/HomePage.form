@@ -420,14 +420,16 @@
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                                              <Component id="btnAdd" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                                              <Component id="btndelete" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                                              <Component id="btMaxSmall" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="btSmall" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="btMaxPig" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="btPig" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                                               <Component id="txtPage" alignment="1" min="-2" pref="42" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="3" attributes="0">
+                                                  <Component id="btnAdd" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                                                  <Component id="btndelete" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                                                  <Component id="btMaxSmall" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="btSmall" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="btMaxPig" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="btPig" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
                                           <Component id="txtCountPage" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
                                       </Group>

@@ -24,6 +24,7 @@ import static project2.admin.DOB.Product.pst;
 import java.awt.Image;
 import java.io.FileNotFoundException;
 import javax.swing.Icon;
+import javax.swing.JFrame;
 import project2.view.HomePage;
 
 /**
@@ -44,6 +45,7 @@ public class AddProduct extends javax.swing.JFrame {
         initComponents();
         fillCombobox();
         this.setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -79,6 +81,7 @@ public class AddProduct extends javax.swing.JFrame {
         txtError = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         txtQuantity = new javax.swing.JTextField();
+        btnExit = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -173,15 +176,21 @@ public class AddProduct extends javax.swing.JFrame {
 
         jLabel8.setText("Quantity");
 
+        btnExit.setBackground(new java.awt.Color(233, 51, 10));
+        btnExit.setForeground(new java.awt.Color(222, 5, 5));
+        btnExit.setText("  X");
+        btnExit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnExitMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(257, 257, 257)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -220,12 +229,20 @@ public class AddProduct extends javax.swing.JFrame {
                         .addGap(30, 30, 30)
                         .addComponent(lbl_image_list, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(257, 257, 257)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1))
+                    .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(13, 13, 13)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -412,6 +429,11 @@ public class AddProduct extends javax.swing.JFrame {
     private void txtDecribeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDecribeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDecribeActionPerformed
+
+    private void btnExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseClicked
+         this.dispose();
+     
+    }//GEN-LAST:event_btnExitMouseClicked
     public void Referesh(){
         txtName.setText("");
         txtDecribe.setText("");
@@ -468,8 +490,9 @@ public class AddProduct extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JComboBox<String> boxCategory;
-    private javax.swing.JButton btnAdd;
-    private javax.swing.JButton btnEdit;
+    public javax.swing.JButton btnAdd;
+    public javax.swing.JButton btnEdit;
+    private javax.swing.JLabel btnExit;
     private javax.swing.JButton btnImage;
     private javax.swing.JButton btn_reset;
     private javax.swing.JButton btnback;

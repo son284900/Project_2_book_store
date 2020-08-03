@@ -51,7 +51,7 @@ public class HomePage extends javax.swing.JFrame {
     public HomePage() {
         initComponents();
         fillCombobox();
-        populateTable();
+//        populateTable();
         this.txtUser.setText("User Name: "+FormLogin.userName);
         this.setLocationRelativeTo(null);
         countDb();
@@ -60,6 +60,7 @@ public class HomePage extends javax.swing.JFrame {
         }else{
             CountPage = count/limit+1;
         }
+        loadDate(0, limit);
         txtCountPage.setText("1/"+(CountPage));
         txtPage.setText("1");
     }
@@ -411,14 +412,15 @@ public class HomePage extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btndelete, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btMaxSmall)
-                                        .addComponent(btSmall)
-                                        .addComponent(btMaxPig)
-                                        .addComponent(btPig)
-                                        .addComponent(txtPage, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtPage, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(btndelete, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(btMaxSmall)
+                                            .addComponent(btSmall)
+                                            .addComponent(btMaxPig)
+                                            .addComponent(btPig)))
                                     .addComponent(txtCountPage, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(48, 48, 48))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -794,6 +796,7 @@ public class HomePage extends javax.swing.JFrame {
         this.setVisible(false);
         AddProduct add = new AddProduct();
         add.setVisible(true);
+        add.btnEdit.setEnabled(false);
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void tbHomeMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbHomeMouseReleased
@@ -827,6 +830,7 @@ public class HomePage extends javax.swing.JFrame {
         show_data_product.txtDecribe.setText(describes);
         show_data_product.txtPrice.setText(price);
         show_data_product.txtQuantity.setText(quantity);
+        show_data_product.btnAdd.setEnabled(false);
 
     }//GEN-LAST:event_tbHomeMouseClicked
 
@@ -879,7 +883,7 @@ public class HomePage extends javax.swing.JFrame {
     private void btSmallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSmallActionPerformed
         // TODO add your handling code here:
         if(Page > 1){
-              Page --;
+            Page --;
             loadDate(((Page-1)*limit),limit);
             txtPage.setText(""+Page);
             txtCountPage.setText(Page + "/"+(CountPage));
@@ -889,7 +893,7 @@ public class HomePage extends javax.swing.JFrame {
     private void btPigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPigActionPerformed
         // TODO add your handling code here:
         if(Page < CountPage){
-              Page ++;
+            Page ++;
             loadDate(((Page-1)*limit),limit);
             txtPage.setText(""+(Page));
             txtCountPage.setText((Page) + "/"+(CountPage));
@@ -910,6 +914,7 @@ public class HomePage extends javax.swing.JFrame {
         loadDate(Page,limit);
         txtPage.setText(""+(CountPage));
         txtCountPage.setText((CountPage)+"/"+(CountPage));
+        Page = Page-(limit+1) ;
     }//GEN-LAST:event_btMaxPigActionPerformed
    
      public void tableData(){

@@ -50,6 +50,7 @@ public class updateReppository extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         txtCurrent = new javax.swing.JTextField();
         lbError = new javax.swing.JLabel();
+        btnExit = new javax.swing.JLabel();
         btnback = new javax.swing.JButton();
         btn_reset = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
@@ -113,6 +114,15 @@ public class updateReppository extends javax.swing.JFrame {
             }
         });
 
+        btnExit.setBackground(new java.awt.Color(233, 51, 10));
+        btnExit.setForeground(new java.awt.Color(222, 5, 5));
+        btnExit.setText("  X");
+        btnExit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnExitMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -152,13 +162,18 @@ public class updateReppository extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(257, 257, 257)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(214, 214, 214))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1))
+                    .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(13, 13, 13)
@@ -306,6 +321,10 @@ public class updateReppository extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCurrentActionPerformed
 
+    private void btnExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_btnExitMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -343,6 +362,7 @@ public class updateReppository extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEdit;
+    private javax.swing.JLabel btnExit;
     private javax.swing.JButton btn_reset;
     private javax.swing.JButton btnback;
     private javax.swing.JLabel jLabel1;

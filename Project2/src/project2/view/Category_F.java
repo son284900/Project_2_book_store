@@ -641,6 +641,7 @@ public class Category_F extends javax.swing.JFrame {
         show_data_category.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         show_data_category.txtName.setText(name);
         show_data_category.txtId.setText(id);
+        show_data_category.btnAdd.setEnabled(false);
     }//GEN-LAST:event_tbHomeMouseClicked
 
     private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
@@ -674,6 +675,7 @@ public class Category_F extends javax.swing.JFrame {
         this.setVisible(false);
         EditCategory addctg = new EditCategory();
         addctg.setVisible(true);
+        addctg.btnEdit.setEnabled(false);
     }//GEN-LAST:event_btnAddCategoryActionPerformed
 
     private void btndeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndeleteActionPerformed
