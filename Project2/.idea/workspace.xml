@@ -2,32 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4122df85-c22a-40a2-a11f-7bbb6d7a8a39" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Export/fileExportProduct.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Export/fileExportProduct.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/DOB/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/DOB/Product.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct$9.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/admin/formAdd/AddProduct.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/view/HomePage$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/view/HomePage$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/view/HomePage$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/view/HomePage$10.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/view/HomePage$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/view/HomePage$11.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/view/HomePage$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/view/HomePage$12.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/view/HomePage$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/view/HomePage$13.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/view/HomePage$14.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/view/HomePage$14.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/view/HomePage$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/view/HomePage$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/view/HomePage$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/view/HomePage$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/view/HomePage$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/view/HomePage$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/view/HomePage$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/view/HomePage$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/view/HomePage$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/view/HomePage$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/view/HomePage$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/view/HomePage$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/view/HomePage$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/view/HomePage$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/view/HomePage$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/view/HomePage$9.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/view/HomePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/view/HomePage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/project2/view/HomePage.form" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/project2/view/HomePage.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/project2/admin/DOB/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project2/admin/DOB/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/project2/admin/formAdd/AddProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project2/admin/formAdd/AddProduct.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/project2/view/HomePage.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/project2/view/HomePage.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/project2/view/HomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project2/view/HomePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/Mydb-2020_07_18_22_20_45-dump.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/Mydb-2020_07_18_22_20_45-dump.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,6 +62,7 @@
       <workItem from="1595564989694" duration="4000" />
       <workItem from="1595648220836" duration="220000" />
       <workItem from="1596281844165" duration="4000" />
+      <workItem from="1596425867209" duration="24000" />
     </task>
     <servers />
   </component>

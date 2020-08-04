@@ -914,7 +914,7 @@ public class HomePage extends javax.swing.JFrame {
         loadDate(Page,limit);
         txtPage.setText(""+(CountPage));
         txtCountPage.setText((CountPage)+"/"+(CountPage));
-        Page = Page-(limit+1) ;
+        Page = CountPage ;
     }//GEN-LAST:event_btMaxPigActionPerformed
    
      public void tableData(){
