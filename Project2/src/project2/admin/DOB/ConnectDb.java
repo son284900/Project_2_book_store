@@ -20,7 +20,7 @@ public class ConnectDb {
         }else{
             try {
                 Class.forName("com.mysql.jdbc.Driver");
-                connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Project2" , "root" , "123456789");
+                connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Project2" , "demo" , "password");
             } catch (Exception ex) {
                 Logger.getLogger(ConnectDb.class.getName()).log(Level.SEVERE, null, ex);
             }

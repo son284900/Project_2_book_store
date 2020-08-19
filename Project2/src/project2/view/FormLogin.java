@@ -325,7 +325,7 @@ public class FormLogin extends javax.swing.JFrame {
     private boolean validate_login(String username, String password) {
        try{           
             Class.forName("com.mysql.jdbc.Driver"); 
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Project2?" + "user=root&password=123456789");     
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Project2?" + "user=demo&password=password");     
             PreparedStatement pst = conn.prepareStatement("Select * from Admin where username=? and password=?");
             pst.setString(1, username); 
             pst.setString(2, password);
